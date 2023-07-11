@@ -61,9 +61,14 @@
       
       <!-- Supabase initialization-->
       <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-      
+      <script type="module">
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+        const supabase = createClient('https://gmvunxcjewopcxdjmlwt.supabase.co', 
+                              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtdnVueGNqZXdvcGN4ZGptbHd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3MzY4ODcsImV4cCI6MjAwNDMxMjg4N30.2qKUqgFXKKZZB6vEiqkjOomcpBZzJE7n4FBR0Ez7WJA')
+      </script>
+
       <!-- Main study components -->
-      <script src="./js/saveData.js" type="module"></script>      <!-- set up data saving functions -->
+      <!-- <script src="./js/saveData.js" type="module"></script>      set up data saving functions -->
       <!-- <script src="./js/SupabaseAuth.js" type="module"></script>  set up task version info vars -->
       <script src="./js/versionInfo.js" type="module"></script>   <!-- set up task version info vars -->
       <script src="./js/noconsent.js" type="module"></script>     <!-- get informed consent then -->

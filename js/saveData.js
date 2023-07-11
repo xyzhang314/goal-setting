@@ -10,8 +10,9 @@ const supabase = createClient('https://gmvunxcjewopcxdjmlwt.supabase.co',
 import { randCond } from "./versionInfo.js";
 
 // function to save startData 
-var saveStartData = function(startTime){
-  supabase.from('rew_eff').insert({
+const { data, error } = await supabase
+.from('rew_eff')
+.upsert({
     date: new Date().toISOString().split('T')[0],
     start_time: new Date().toLocaleTimeString(),
     condition: randCond,
@@ -19,6 +20,5 @@ var saveStartData = function(startTime){
     participant_os: navigator.userAgent,
     task_starttime_phaser: startTime,
    })
-};
 
 export { saveStartData }

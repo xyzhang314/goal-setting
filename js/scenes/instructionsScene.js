@@ -3,12 +3,32 @@
 // import js game element modules (sprites, ui, outcome animations)
 import InstructionsPanel from "../elements/instructionsPanel.js";
 
+// import creatClient
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://gmvunxcjewopcxdjmlwt.supabase.co', 
+                              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtdnVueGNqZXdvcGN4ZGptbHd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3MzY4ODcsImV4cCI6MjAwNDMxMjg4N30.2qKUqgFXKKZZB6vEiqkjOomcpBZzJE7n4FBR0Ez7WJA')
+
 // import our custom events centre for passsing info between scenes and data saving function
 import eventsCenter from "../eventsCenter.js";
-import { saveStartData } from "../saveData.js";
+import { randCond } from "../versionInfo.js";
+// import { saveStartData } from "../saveData.js";
 
 // initialize global start time var
 var startTime;
+
+// save startData 
+const { data, error } = await supabase
+.from('rew_eff')
+.upsert({
+    date: new Date().toISOString().split('T')[0],
+    start_time: new Date().toLocaleTimeString(),
+    condition: randCond,
+    exp_completed: 0,
+    participant_os: navigator.userAgent,
+    task_starttime_phaser: startTime,
+   })
 
 // this function extends Phaser.Scene and includes the core logic for the scene
 export default class InstructionsScene extends Phaser.Scene {
@@ -104,8 +124,9 @@ export default class InstructionsScene extends Phaser.Scene {
     update(time, delta) {
     }
     
+    
     nextScene() {
-        saveStartData(startTime);           // [for firebase]
+        // saveStartData(startTime);           // [for firebase]
         this.scene.start('PracticeTask');
     } 
 }
