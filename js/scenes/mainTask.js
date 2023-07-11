@@ -144,7 +144,8 @@ export default class MainTask extends Phaser.Scene {
         // add coin count text in a fixed position on the screen
         coinsText = this.add
             .text(gameWidth-160, 16, "金币："+nCoins, {
-                font: "18px monospace",
+                //font: "18px monospace",
+                fontFamily: "Microsoft Yahei",
                 fill: "#FFD700",
                 padding: { x: 20, y: 10 },
                 backgroundColor: "#000000"
@@ -324,8 +325,9 @@ var effortOutcome = function() {
         this.physics.add.overlap(this.player.sprite, this.coins1.sprite, collectCoins, null, this); 
         // display success message for a couple of seconds,
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
-                                 "Woohoo! You did it!", {
-                                    font: "20px monospace",
+                                 "呜呼~你成功啦！", {
+                                    // font: "20px monospace",
+                                    fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -362,7 +364,8 @@ var effortOutcome = function() {
         // display success message for a couple of seconds,
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "Woohoo! You did it!", {
-                                    font: "20px monospace",
+                                    // font: "20px monospace",
+                                    fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -395,8 +398,9 @@ var effortOutcome = function() {
         trialSuccess = 0;
         // display failure message for a couple of seconds
         feedback = this.add.text(decisionPointX, gameHeight/2-160,  
-                                 "Sorry, not quite enough\npower this time!", {
-                                    font: "20px monospace",
+                                 "真可惜，这次还不够快！", {
+                                    // font: "20px monospace",
+                                    fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },

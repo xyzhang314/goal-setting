@@ -242,7 +242,7 @@ var displayInfoPanel = function () {
     
     // popup choice panel with relevant trial info
     let titleTxt = ("练习 "+(pracTrial+1)+" / "+nPracTrials+"");
-    let mainTxt = ("请尽最大努力快速点击 [color=#ffffff]加油[/color] 按钮，\n"+
+    let mainTxt = ("  请尽最大努力快速点击 [color=#ffffff]加油[/color] 按钮， \n"+
                    //"until the power bar shows you are [color=#ffffff]100% charged[/color].\n\n"+
                    "直到进度条 [color=#ffffff]完全充满[/color]。\n\n"+
                    "付出努力越多，收获金币也越多！\n\n"+

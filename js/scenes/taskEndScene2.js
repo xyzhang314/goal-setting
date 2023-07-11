@@ -27,17 +27,15 @@ export default class TaskEndScene2 extends Phaser.Scene {
         var gameHeight = this.sys.game.config.height;
         var gameWidth = this.sys.game.config.width;
 
-        var titleText = 'Game Over!'
+        var titleText = '游戏结束'
         ///////////////////PAGE ONE////////////////////
-        var mainTxt = ("Thank you for playing.\n\n" +
+        var mainTxt = ("辛苦啦！\n\n" +
                        
-                        "  We will now ask you to answer  \n"+
-                        "again the short questions about\n"+
-                        "how you are feeling right now,\n"+
-                        "  before moving on to the final part of the study.\n\n  "+
+                        "接下来，我们会询问你一些\n"+
+                        "关于 [b]当前[/b] 感受的小问题。\n\n"+
                        
-                        "Press the button below to continue.\n\n");
-        var buttonTxt = "continue";
+                        " 请点击下方按钮。\n\n");
+        var buttonTxt = "继续";
         var pageNo = 1;
         this.endPanel2 = new InstructionsPanel(this, gameWidth/2, gameHeight/2,
                                                 pageNo, titleText, mainTxt, buttonTxt);

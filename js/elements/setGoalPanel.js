@@ -6,17 +6,15 @@ export default class SetGoalPanel {
     constructor(scene, x, y, block, maxRewBlock) {
     this.scene = scene;
 
-    var mainTxt =  'Please set a goal for the number of coins\n'+
-                   'you want to try and collect during\n'+
-                   'this "block" of choices.\n\n'+
-                   'For this block, [color=#FFD700]if you choose the highest\n'+
-                   ' power option every single time[/color] you could collect\n'+
-                   '[color=#FFD700]'+maxRewBlock+' coins[/color] (this is the maximum possible).\n\n'+
-                   'Please set your personal goal for this block\n'+
-                   'using the slider below. Press [b]enter answer[/b]\n'+
-                   'when you are ready to continue.\n\n';
+    var mainTxt =  '请设定在接下来一轮的游戏中，你想要\n'+
+                   '收集的金币数量。\n\n'+
+                   '在本轮游戏中，[color=#FFD700]如果你每次都选择\n'+
+                   '金币数量最多的那条路径[/color]，你将最\n'+
+                   '终收获 [color=#FFD700]'+maxRewBlock+' 金币[/color]。\n\n'+
+                   '请通过拖动下方滑动条来为这轮游\n'+
+                   '戏设定目标。请点击 [b]确认[/b] 按钮开始游戏。\n\n';
     
-    var buttonTxt = 'enter answer';    
+    var buttonTxt = '确认';    
 
     var mainPanel = createMainPanel(scene, mainTxt, buttonTxt, block, maxRewBlock)
         .setPosition(x,y)
@@ -82,8 +80,9 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
-        text: scene.add.text(0, 0, 'Set your goal!', {
-            fontSize: '24px'
+        text: scene.add.text(0, 0, '请设定目标！', {
+            fontSize: '24px',
+            fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {
@@ -95,7 +94,9 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
-        font: '20px monospace',
+        font: '25px monospace',
+        fontSize: '21px',
+        fontFamily: "Microsoft Yahei",
         align: 'center'
     }),
 
@@ -131,7 +132,8 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, text, {
-            fontSize: '20px'
+            fontSize: '21px',
+            fontFamily: "Microsoft Yahei",
         }),
         align: 'center',
         width: 40,
@@ -160,8 +162,8 @@ var createNumberBar = function (scene, maxRewBlock) {
         },
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
-            fontSize: '20px', fixedWidth: 50, fixedHeight: 45,
-            valign: 'center', halign: 'center'
+            fontSize: '20px', fontFamily: "Microsoft Yahei", fixedWidth: 50, 
+            fixedHeight: 45, valign: 'center', halign: 'center'
         }),
 
         space: {

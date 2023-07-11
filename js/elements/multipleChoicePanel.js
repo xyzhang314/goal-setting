@@ -29,13 +29,13 @@ export default class MultipleChoicePanel {
             x: 400,
             y: 535,
             align: 'center',
-            buttons: [ createButton(scene, 'go back')]
+            buttons: [ createButton(scene, '上一页')]
         })
         .layout();
 
         buttons
         .on('button.click', function (button, groupName, index) {
-            if (button.text == 'go back') {
+            if (button.text == '上一页') {
                 eventsCenter.emit('goback');
             }
         }, this)
@@ -108,9 +108,10 @@ var createDialog = function (scene, titleText, questionNo, questionText, respons
         }
     }),
 
-    content: scene.rexUI.add.BBCodeText(0, 0, questionText, {fontSize: '18px', 
-                                                        //font: '20px monospace', 
-                                                        align: 'center' //color: '#222222'
+    content: scene.rexUI.add.BBCodeText(0, 0, questionText, {fontSize: '21px',
+                                                             fontFamily: "Microsoft Yahei",
+                                                            //font: '20px monospace', 
+                                                            align: 'center' //color: '#222222'
                                                        }),
     actions: [
         createLabel(scene, responseOptions[0]),
@@ -147,8 +148,9 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
-            //fontSize: '20px',
-            font: '18px monospace',
+            fontSize: '21px',
+            //font: '18px monospace',
+            fontFamily: "Microsoft Yahei",
         }),
         align: 'center',
         width: 40,

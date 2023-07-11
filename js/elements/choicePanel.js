@@ -77,7 +77,8 @@ var createDialog = function (scene, titleTxt, mainTxt, buttonTxt) {
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleTxt, {
-            fontSize: '24px'
+            fontSize: '24px',
+            fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {

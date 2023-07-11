@@ -34,12 +34,11 @@ export default class PostTaskQuestions extends Phaser.Scene {
         questName = 'PHQstate';
 
         ///////////////////QUEST1////////////////////
-        var titleText = 'Right now...';
-        questionText = ('....how much are you bothered by\n\n'+
-                   '[color=#111]little interest or pleasure in doing things?[/color]\n'
+        var titleText = '现在你有没有...';
+        questionText = ('[color=#111]做事时提不起劲或没有兴趣？[/color]\n'
                    );
         questionNo = 1;
-        var responseOptions = ['not at all', 'a bit', 'somewhat', 'a lot'];
+        var responseOptions = ['完全没有', '有点', '中等程度', '非常明显'];
         this.mcPanel = new MultipleChoicePanel(this, 
                                                gameWidth/2, gameHeight/2,
                                                questName, titleText, questionNo, 
@@ -48,8 +47,7 @@ export default class PostTaskQuestions extends Phaser.Scene {
         ///////////////////QUEST2////////////////////
         eventsCenter.once(gamePhase+questName+'1complete', function () {
             //savePostTaskData(gamePhase+questName+questionNo, this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            questionText = ('....how much are you bothered by\n\n'+
-                       '[color=#111]feeling down, depressed, or hopeless?[/color]\n'
+            questionText = ('[color=#111]感到心情低落、沮丧或绝望[/color]\n'
                        );
             questionNo = 2;
             this.mcPanel = new MultipleChoicePanel(this, 
@@ -61,8 +59,7 @@ export default class PostTaskQuestions extends Phaser.Scene {
         ///////////////////QUEST3////////////////////
         eventsCenter.once(gamePhase+questName+'2complete', function () {
             //savePostTaskData(gamePhase+questName+questionNo, this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            questionText = ('....how much are you bothered by\n\n'+
-                       '[color=#111]feeling tired or having little energy?[/color]\n'
+            questionText = ('[color=#111]感觉疲惫或没有活力[/color]\n'
                        );
             questionNo = 3;
             this.mcPanel = new MultipleChoicePanel(this, 
@@ -74,9 +71,8 @@ export default class PostTaskQuestions extends Phaser.Scene {
         ///////////////////QUEST4////////////////////
         eventsCenter.once(gamePhase+questName+'3complete', function () {
             savePostTaskData(gamePhase+questName+questionNo, this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            questionText = ('....how much are you bothered by\n\n'+
-                       '[color=#111]feeling bad about yourself - or \n'+
-                       'that you are a failure or have let yourself down?[/color]\n'
+            questionText = ('[color=#111]觉得自己很糟或觉得自己很\n'+
+                       '失败，或让自己、家人失望[/color]\n'
                        );
             questionNo = 4;
             this.mcPanel = new MultipleChoicePanel(this, 
@@ -88,8 +84,7 @@ export default class PostTaskQuestions extends Phaser.Scene {
         ///////////////////QUEST5////////////////////
         eventsCenter.once(gamePhase+questName+'4complete', function () {
             //savePostTaskData(gamePhase+questName+questionNo, this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            questionText = ('....how much are you bothered by\n\n'+
-                       '[color=#111]trouble concentrating?[/color]\n'
+            questionText = ('[color=#111]对事物专注有困难，例如看书、看电视时?[/color]\n'
                        );
             questionNo = 5;
             this.mcPanel = new MultipleChoicePanel(this, 
@@ -101,8 +96,7 @@ export default class PostTaskQuestions extends Phaser.Scene {
         ///////////////////QUEST6////////////////////
         eventsCenter.once(gamePhase+questName+'5complete', function () {
             // savePostTaskData(gamePhase+questName+questionNo, this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            questionText = ('....how much are you bothered by\n\n'+
-                       '[color=#111]feeling like you are slowed down?[/color]\n'
+            questionText = ('[color=#111]行动或说话速度缓慢到别人已经察觉[/color]\n'
                        );
             questionNo = 6;
             this.mcPanel = new MultipleChoicePanel(this, 
@@ -114,9 +108,7 @@ export default class PostTaskQuestions extends Phaser.Scene {
         ///////////////////QUEST7////////////////////
         eventsCenter.once(gamePhase+questName+'6complete', function () {
             // savePostTaskData(gamePhase+questName+questionNo, this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            questionText = ('....how much are you bothered by\n\n'+
-                       '[color=#111]feeling fidgety or more restless\n'+
-                       'than usual?[/color]\n'
+            questionText = ('[color=#111]变得比平常更烦躁或坐立不安[/color]\n'
                        );
             questionNo = 7;
             this.mcPanel = new MultipleChoicePanel(this, 

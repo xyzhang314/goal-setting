@@ -60,11 +60,12 @@ export default class StartTaskScene extends Phaser.Scene {
                     "When you are ready, [b]press the\n"+
                     "button[/b] below to start!\n"),
                    {fontSize: '18px',
+                   fontSize: '24px',
                     align: 'center',
                     color: '#000000'
                    }),
             actions: [
-                createLabel(this, 'start game')
+                createLabel(this, '开始游戏')
             ],
             space: {
                 title: 25,
@@ -121,7 +122,8 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0x5e81a2),
         text: scene.add.text(0, 0, text, {
-            fontSize: '20px',
+            fontSize: '21px',
+            fontSize: '24px',
             fill: '#000000'
         }),
         align: 'center',

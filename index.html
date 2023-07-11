@@ -54,57 +54,20 @@
       <div id='game-container'></div>
       <div id='jspsych-target'></div>
 
-      
-      <!-- firebase initialization [for firebase deployment, always load first] -->
-      <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-      <script>
-        // web app configuration
-        // var firebaseConfig = {
-        //   apiKey: "",
-        //   authDomain: "",
-        //   databaseURL: "",
-        //   projectId: "",
-        //   storageBucket: "",
-        //   messagingSenderId: "",
-        //   appId: "",
-        //   measurementId: ""
-        // };
-        // initialize
-        // firebase.initializeApp(firebaseConfig);
-      </script> -->
-      <!-- helper functions [for firebase deployment w/Prolific] --> 
-      <!-- <script src="./js/firebaseAuth.js"></script>        anon login to firebase -->
-      <!-- <script src="./js/getProlificID.js"></script>       parse html to get Prolific IDs -->
-            
       <!-- Project-specific libraries -->
       <!-- NB newer phaser3 versions are available but not compatible with this version of rexUI -->
       <script src="https://cdn.jsdelivr.net/npm/phaser@3.23.0/dist/phaser.js"></script>
       <script src="./js/ui/rexuiplugin.min.js" type="text/javascript"></script>
-<!-- Fauna -->
-      <script src="https://cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
-      <script type="text/javascript">
-        var faunadb = window.faunadb
-        var q = faunadb.query
-        var client = new faunadb.Client({
-          secret: 'fnAFIVaosYAAUUw2S3-stMR1yh__L5tLajCRkBg7',
-          // Adjust the endpoint if you are using Region Groups
-          endpoint: 'https://db.fauna.com/',
-        })
-        client.query(
-          q.ToDate('2018-06-06')
-        )
-        .then(function (res) { console.log('Result:', res) })
-        .catch(function (err) { console.log('Error:', err) })
-      </script>
-
+      
+      <!-- Supabase initialization-->
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      
       <!-- Main study components -->
-      <!-- <script src="./js/saveData.js" type="module"></script>     set up data saving functions -->
-      <script src="./js/versionInfo.js" type="module"></script>  <!-- set up task version info vars -->
-      <script src="./js/noconsent.js" type="module"></script>      <!-- get informed consent then -->
-      <script src="./js/task.js" type="module"></script>         <!-- run task! -->
-      <!-- <script src="./js/selfReports.js" type="module"></script>  run self-report questionnaires -->
+      <script src="./js/saveData.js" type="module"></script>      <!-- set up data saving functions -->
+      <!-- <script src="./js/SupabaseAuth.js" type="module"></script>  set up task version info vars -->
+      <script src="./js/versionInfo.js" type="module"></script>   <!-- set up task version info vars -->
+      <script src="./js/noconsent.js" type="module"></script>     <!-- get informed consent then -->
+      <script src="./js/task.js" type="module"></script>          <!-- run task! -->
 
       <script nomodule>
         alert(
