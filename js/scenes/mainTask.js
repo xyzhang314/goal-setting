@@ -540,7 +540,7 @@ var getBlockEndRatings = function (scene) {
         ///////////////////QUESTION THREE////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
             // coinImg.destroy();
-            mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
+            mainTxt = '在刚才一轮游戏中，当你收集金币时\n'+
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+

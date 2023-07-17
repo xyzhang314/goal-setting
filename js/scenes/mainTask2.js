@@ -62,7 +62,7 @@ var goalProgressBar;
 var barWidth = 140;
 var barHeight = 40;
 var progressText;
-var prTxt = "           目标\n           进度";
+var prTxt = "          目标\n          进度";
 
 // this function extends Phaser.Scene and includes the core logic for the game
 export default class MainTask2 extends Phaser.Scene {
@@ -227,7 +227,7 @@ export default class MainTask2 extends Phaser.Scene {
             .setOrigin(0,0)                                     
             .setScrollFactor(0); 
             // with yellow in-fill dependent on progress towards goal
-            goalProgressBar = this.add.rectangle(decisionPointX+113, 16, Math.round(goalProgress*(barWidth-6)), barHeight-6, 0xFFD700) // initialize at zero
+            goalProgressBar = this.add.rectangle(decisionPointX+113, 18, Math.round(goalProgress*(barWidth-6)), barHeight-4, 0xFFD700) // initialize at zero
             .setOrigin(0,0) 
             .setScrollFactor(0); 
             progressText = this.add.text(decisionPointX+12, 16, prTxt, {color: "#000000",fontFamily: "Microsoft Yahei",})
@@ -567,7 +567,7 @@ var trialEnd2 = function () {
                 // restart coin total and goal progress from 0 after each block2
                 nCoins = 0;
                 goalProgress = 0;
-                prTxt = "           目标\n           进度";
+                prTxt = "          目标\n          进度";
                 // set goal or get control rating for next block2
                 if (taskType == "planning") {
                     this.goalPanel = new SetGoalPanel(this, mapWidth-gameWidth/2, gameHeight/2, block2, maxRews[block2]);   
@@ -633,7 +633,7 @@ var getBlockEndRatings2 = function (scene) {
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
             // coinImg.destroy();
             //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
-            mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
+            mainTxt = '在刚才一轮游戏中，当你收集金币时\n'+
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
@@ -675,9 +675,9 @@ var collectCoins2 = function(player, coin){
         goalProgress = nCoins/blockGoal;
         if (nCoins >= blockGoal) {
             goalProgress = 1;
-            prTxt = "目标\n达成！";
+            prTxt = "     目标\n         达成！";
             progressText.setText(prTxt);
         }
-        goalProgressBar.setDisplaySize(Math.round(goalProgress*(barWidth-6)), barHeight-6);
+        goalProgressBar.setDisplaySize(Math.round(goalProgress*(barWidth-6)), barHeight-4);
     }
 };
