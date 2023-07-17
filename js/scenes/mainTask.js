@@ -10,7 +10,7 @@ import QuestionPanel from "../elements/questionPanel.js";
 
 // import our custom events center for passsing info between scenes and relevant data saving function
 import eventsCenter from '../eventsCenter.js'
-//import { saveTaskData, savePostTaskData } from "../saveData.js";
+import { saveTask0Data, saveTask0Ques } from "../saveData.js";
 
 // import effort info from versionInfo file
 import { effortTime, minPressMax, nBlocks, debugging, maxRews, taskConds } from "../versionInfo.js"; 
@@ -256,9 +256,23 @@ export default class MainTask extends Phaser.Scene {
     }
     
     nextScene() {
-        // taskN++;
-        // this.registry.set('taskN', taskN);   // increment and log task N (to pass between sceens)
-        this.scene.start('PostTaskQuestions');
+        // save task0 data [for supabase]
+        var nTask0data = []; 
+        for (var i = 0; i < 44; i++)
+        {
+            nTask0data.push('task0_trial'+i)
+        }
+        saveTask0Data(this.registry.get(nTask0data));
+
+        // save question answer [for supabase]
+        var nTask0question = [];
+        for (var i = 0; i < 4; i++)
+        {
+            nTask0question.push('task0postBlock'+i+"question1", 'task0postBlock'+i+"question2", 'task0postBlock'+i+"question3")
+            //'task'+taskN+gamePhase+'question'+questionNo
+        }
+        saveTask0Ques(this.registry.get(nTask0question));
+        this.scene.start('TaskEndScene');
     }
 }
 
@@ -294,7 +308,7 @@ var doChoice = function () {
     choice = this.registry.get('choice');  
     
     // if participant chooses the high effort option
-    if (choice == 'route 1') {      
+    if (choice == '路线 1') {      
         // timer panel pops up  
         this.timerPanel = new TimerPanel(this, decisionPointX+20, gameHeight/2-160, effortTime, trialEffort1, practiceOrReal) 
         // and play player 'power-up' animation
@@ -319,7 +333,7 @@ var effortOutcome = function() {
     pressTimes = this.registry.get('pressTimes');  // [?we want this - might make code run slow...]
     
     // if ppt chooses high effort and clears trial effort threshold, fly across sky and collect coins!
-    if (choice == 'route 1' && pressCount >= trialEffort1) {
+    if (choice == '路线 1' && pressCount >= trialEffort1) {
         trialSuccess = 1;
         // add overlap colliders so coins disappear when overlap with player body
         this.physics.add.overlap(this.player.sprite, this.coins1.sprite, collectCoins, null, this); 
@@ -357,13 +371,13 @@ var effortOutcome = function() {
                             callbackScope: this});
     }
     // if ppt chooses low effect and clears trial effort threshold, fly across mid-sky and collect coins!
-    else if (choice == 'route 2' && pressCount >= trialEffort2)  {
+    else if (choice == '路线 2' && pressCount >= trialEffort2)  {
         trialSuccess = 1;
         // add overlap colliders so coins disappear when overlap with player body
         this.physics.add.overlap(this.player.sprite, this.coins2.sprite, collectCoins, null, this); 
         // display success message for a couple of seconds,
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
-                                 "Woohoo! You did it!", {
+                                 "呜呼~你成功啦！", {
                                     // font: "20px monospace",
                                     fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
@@ -460,8 +474,7 @@ var trialEnd = function () {
                                                   condition: taskType
                                                  });
     // save data
-    //saveTaskData(trial, this.registry.get(`trial${trial}`));        // [for firebase]
-    //saveTaskData("task"+taskN+"_trial"+trial, this.registry.get(`task${taskN}_trial${trial}`));   // [for firebase]
+    // saveTaskData(trial, this.registry.get(`trial${trial}`));        // [for firebase]
     
     // if end of block 
     if (((trial+1) % blockLength == 0)) {
@@ -500,40 +513,38 @@ var getBlockEndRatings = function (scene) {
                       '你会感到多大的愉快感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '     0 =   “完全没有”             100 =   “非常明显”     '
+                      '    0 = “完全没有”           100 = “非常明显”    '
         var questionNo = 1;
         
         scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,
                                                taskN, gamePhase, questionNo, mainTxt);
-        var coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
-        coinImg.setScale(2);
+        // var coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
+        // coinImg.setScale(2);
         
         ///////////////////QUESTION TWO////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question1complete', function () {
-            coinImg.destroy();
-            //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
+            // coinImg.destroy();
             mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
                       '你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '     0 =   “完全没有”             100 =   “非常明显”     '
+                      '    0 = “完全没有”           100 = “非常明显”    '
             questionNo = 2;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300, 
                                                    taskN, gamePhase, questionNo, mainTxt);
-            coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
-            coinImg.setScale(2);
+            // coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
+            // coinImg.setScale(2);
         }, this);    
 
         ///////////////////QUESTION THREE////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
-            coinImg.destroy();
-            //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
+            // coinImg.destroy();
             mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '     0 =   “完全没有”             100 =   “非常明显”     '
+                      '    0 = “完全没有”           100 = “非常明显”    '
             questionNo = 3;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,
@@ -542,8 +553,7 @@ var getBlockEndRatings = function (scene) {
         
         // end scene
         eventsCenter.once('task'+taskN+gamePhase+'question3complete', function () {
-            coinImg.destroy();
-            //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));    // [firebase]
+            // coinImg.destroy();
         }, this);
 };
 

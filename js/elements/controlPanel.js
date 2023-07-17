@@ -14,12 +14,11 @@ export default class ControlPanel {
     var mainTxt =  '在本次游戏中，你需要在每轮游戏开始\n'+
                    '前，对不同类型的游戏进行喜爱度评分。\n\n'+
 
-                   '本轮游戏中，你需要\n'+
-                   'much you like '+controlItem+' games.\n\n'+
-                   '请拖动下方进度条进行评分，其中\n'+
-                   '      0 = “不喜欢” ，          100 = “非常喜欢”      \n\n'+
+                   '你喜欢玩 [b]'+controlItem+'[/b] 吗？\n\n'+
+                   '请拖动下方滑动条进行评分，其中\n'+
+                   '      0 = “不喜欢”          100 = “非常喜欢”     \n\n'+
 
-                   '当你准备好继续时，请点击 [b]确认[/b]按钮。\n';
+                   '当你准备好时，请点击 [b]确认[/b] 按钮开始游戏。\n';
     
     var buttonTxt = '确认';     
 
@@ -139,7 +138,8 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px'
+            fontSize: '21px',
+            fontFamily: "Microsoft Yahei",
         }),
         align: 'center',
         width: 40,
@@ -169,7 +169,7 @@ var createNumberBar = function (scene) {
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
             fontSize: '20px', fixedWidth: 50, fixedHeight: 45,
-            valign: 'center', halign: 'center'
+            valign: 'center', halign: 'center', fontFamily: "Microsoft Yahei",
         }),
 
         space: {

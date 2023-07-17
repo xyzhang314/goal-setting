@@ -7,7 +7,7 @@ import InstructionsPanel from "../elements/instructionsPanel.js";
 import eventsCenter from "../eventsCenter.js";
 
 // import relevant data saving function
-//import { saveTaskEndData } from "../saveData.js";
+import { saveEndData } from "../saveData.js";
 //import { runQuests } from "../selfReports.js";
 
 // This function extends Phaser.Scene and includes the core logic for the scene
@@ -32,12 +32,12 @@ export default class TheEnd extends Phaser.Scene {
         var gameWidth = this.sys.game.config.width;
 
         // save task data backup
-        // saveTaskEndData(this.registry.getAll()); 
+        saveEndData();
 
         var titleText = '感谢参与！'
         ///////////////////PAGE ONE////////////////////
-        var mainTxt = ("\n" +
-                       "游戏结束啦，请点击下方按钮。\n\n");
+        var mainTxt = ("  游戏结束啦！\n" +
+                       "  请点击下方按钮。\n");
         var buttonTxt = "完成";
         var pageNo = 1;
         this.endPanel2 = new InstructionsPanel(this, gameWidth/2, gameHeight/2,
@@ -45,7 +45,7 @@ export default class TheEnd extends Phaser.Scene {
         // end scene
         eventsCenter.once('page1complete', function () {
             document.getElementById('game-container').style.display = "none";
-            runQuests();
+            //runQuests();
         }, this);
     }
     

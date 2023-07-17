@@ -76,7 +76,7 @@ var createDialog = function (scene, gamePhase, questionNo, mainTxt, buttonTxt) {
     
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
-        text: scene.add.text(0, 0, 'Question '+questionNo, {
+        text: scene.add.text(0, 0, '问题 '+questionNo, {
             fontSize: '24px',
             fontFamily: "Microsoft Yahei",
             }),
@@ -91,8 +91,9 @@ var createDialog = function (scene, gamePhase, questionNo, mainTxt, buttonTxt) {
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
         font: '26px monospace',
+        fontSize: '21px',
         fontFamily: "Microsoft Yahei",
-        align: 'center'
+        align: 'center',
     }),
 
     actions: [
@@ -157,7 +158,7 @@ var createNumberBar = function (scene) {
         },
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
-            fontSize: '21px', fontFamily: "Microsoft Yahei", fixedWidth: 50, fixedHeight: 45,
+            fontSize: '20px', fontFamily: "Microsoft Yahei", fixedWidth: 50, fixedHeight: 45,
             valign: 'center', halign: 'center'
         }),
 

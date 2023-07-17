@@ -6,13 +6,13 @@ export default class SetGoalPanel {
     constructor(scene, x, y, block, maxRewBlock) {
     this.scene = scene;
 
-    var mainTxt =  '请设定在接下来一轮的游戏中，你想要\n'+
-                   '收集的金币数量。\n\n'+
-                   '在本轮游戏中，[color=#FFD700]如果你每次都选择\n'+
-                   '金币数量最多的那条路径[/color]，你将最\n'+
-                   '终收获 [color=#FFD700]'+maxRewBlock+' 金币[/color]。\n\n'+
-                   '请通过拖动下方滑动条来为这轮游\n'+
-                   '戏设定目标。请点击 [b]确认[/b] 按钮开始游戏。\n\n';
+    var mainTxt =  '请设定在接下来一轮的游戏中，\n'+
+                   '你想要收集的金币总数。\n\n'+
+                   '              在本轮游戏中，如果你 [color=#FFD700]每次都              \n'+
+                   '              选择金币数量最多的那条路径[/color]，              \n'+
+                   '          你将最终可以收集 [color=#FFD700]'+maxRewBlock+' 金币[/color]。         \n\n'+
+                   '   请拖动下方滑动条来设定目标，   \n'+
+                   '   点击 [b]确认[/b] 按钮开始游戏。\n';
     
     var buttonTxt = '确认';    
 
@@ -80,7 +80,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
-        text: scene.add.text(0, 0, '请设定目标！', {
+        text: scene.add.text(0, 0, '请设定目标', {
             fontSize: '24px',
             fontFamily: "Microsoft Yahei",
             }),
@@ -94,7 +94,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
-        font: '25px monospace',
+        font: '26px monospace',
         fontSize: '21px',
         fontFamily: "Microsoft Yahei",
         align: 'center'
@@ -163,7 +163,7 @@ var createNumberBar = function (scene, maxRewBlock) {
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
             fontSize: '20px', fontFamily: "Microsoft Yahei", fixedWidth: 50, 
-            fixedHeight: 45, valign: 'center', halign: 'center'
+            fixedHeight: 45, valign: 'center', halign: 'center',
         }),
 
         space: {

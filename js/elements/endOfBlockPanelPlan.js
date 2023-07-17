@@ -6,14 +6,14 @@ export default class EndOfBlockPanelPlan {
     constructor(scene, x, y, nCoins, blockGoal) {
     this.scene = scene;
         
-    var titleTxtB = '本轮游戏结束！'; 
+    var titleTxtB = ' 本轮游戏结束！'; 
     var mainTxtB = ('你已经完成本轮游戏，在这轮\n'+
-                    '游戏中，你收集了 [color=#FFD700]'+nCoins+' 金币[/color].\n\n'+
-                    '你为自己设定的目标为 [color=#FFD700]'+blockGoal+' 金币[/color].\n\n'+
+                    ' 游戏中，你收集了 [color=#FFD700]'+nCoins+' 金币[/color]。\n\n'+
+                    ' 你设定的目标为 [color=#FFD700]'+blockGoal+' 金币[/color]。\n\n'+
                     '现在，你可以休息一会。\n\n'+
                     '当你准备好了开始下一轮游\n'+
                     '戏，请点击下方 [b]继续[/b] 按钮。');
-    var buttonTxtB = 'continue';     
+    var buttonTxtB = '继续';     
         
     var askBreakPanel = createBreakPanel(scene, titleTxtB, mainTxtB, buttonTxtB)
         .setPosition(x, y)
@@ -53,7 +53,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxtB, 
-                                        {fontSize: '21px', fontFamily: "Microsoft Yahei", align: 'center'}),
+                                        {fontSize: '20px', fontFamily: "Microsoft Yahei", align: 'center', color: '#000000'}),
 
     actions: [
         createLabelB(scene, buttonTxtB)

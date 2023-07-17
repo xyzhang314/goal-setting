@@ -6,7 +6,7 @@ export default class EndOfBlockPanel {
     constructor(scene, x, y, nCoins) {
     this.scene = scene;
         
-    var titleTxtB = '本轮游戏结束！'; 
+    var titleTxtB = ' 本轮游戏结束！'; 
     var mainTxtB = ('你已经完成本轮游戏，在这轮\n'+
                     '游戏中，你收集了 [color=#FFD700]'+nCoins+' 金币[/color]。\n\n'+
                     '现在，你可以休息一会。\n\n'+
@@ -52,7 +52,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxtB, 
-                                        {fontSize: '21px', fontFamily: "Microsoft Yahei", align: 'center'}),
+                                        {fontSize: '20px', fontFamily: "Microsoft Yahei", align: 'center', color: '#000000'}),
 
     actions: [
         createLabelB(scene, buttonTxtB)

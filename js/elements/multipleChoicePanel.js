@@ -27,7 +27,7 @@ export default class MultipleChoicePanel {
         // add buttons to allow navigation forward/back
         buttons = scene.rexUI.add.buttons({
             x: 400,
-            y: 535,
+            y: 455,
             align: 'center',
             buttons: [ createButton(scene, '上一页')]
         })
@@ -97,7 +97,7 @@ var createDialog = function (scene, titleText, questionNo, questionText, respons
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleText, {
-            fontSize: '20px'
+            fontSize: '24px', fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {
@@ -165,11 +165,12 @@ var createLabel = function (scene, text) {
 
 var createButton = function (scene, text) {
     return scene.rexUI.add.label({
-        width: 100,
+        width: 60,
         height: 40,
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
-            fontSize: 18
+            fontSize: '21px',
+            fontFamily: "Microsoft Yahei",
         }),
         space: {
             left: 10,

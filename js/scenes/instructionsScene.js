@@ -3,32 +3,13 @@
 // import js game element modules (sprites, ui, outcome animations)
 import InstructionsPanel from "../elements/instructionsPanel.js";
 
-// import creatClient
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-
-// Create a single supabase client for interacting with your database
-const supabase = createClient('https://gmvunxcjewopcxdjmlwt.supabase.co', 
-                              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtdnVueGNqZXdvcGN4ZGptbHd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3MzY4ODcsImV4cCI6MjAwNDMxMjg4N30.2qKUqgFXKKZZB6vEiqkjOomcpBZzJE7n4FBR0Ez7WJA')
-
 // import our custom events centre for passsing info between scenes and data saving function
 import eventsCenter from "../eventsCenter.js";
-import { randCond } from "../versionInfo.js";
-// import { saveStartData } from "../saveData.js";
+import { saveStartData } from "../saveData.js";
 
 // initialize global start time var
 var startTime;
 
-// save startData 
-const { data, error } = await supabase
-.from('rew_eff')
-.upsert({
-    date: new Date().toISOString().split('T')[0],
-    start_time: new Date().toLocaleTimeString(),
-    condition: randCond,
-    exp_completed: 0,
-    participant_os: navigator.userAgent,
-    task_starttime_phaser: startTime,
-   })
 
 // this function extends Phaser.Scene and includes the core logic for the scene
 export default class InstructionsScene extends Phaser.Scene {
@@ -67,11 +48,11 @@ export default class InstructionsScene extends Phaser.Scene {
         ///////////////////PAGE ONE////////////////////
         var mainTxt = ("  你正在穿越一片覆盖有河流的陌生土地...  \n\n"+
 
-                        "在每一次旅途的起点，你都将使用 [b]神奇雨伞[/b]\n"+
-                        "来帮助你飞跃河流！\n\n"+
+                        "在每一次旅途的起点，你都将\n"+
+                        "使用 [b]神奇雨伞[/b] 来帮助你飞跃河流！\n\n"+
 
-                        " 在每次的起点位置，你需要在 [color=#d0f4f7]两条不同 \n"+
-                        " 路线[/color] 之间 [color=#d0f4f7]进行选择[/color] \n");
+                        " 在每次的起点位置，你需要 \n"+
+                        " 在 [b]两条不同路线[/b] 之间进行 [b]选择[/b]。\n");
         var buttonTxt = "下一页";
         var pageNo = 1;
         this.instructionsPanel = new InstructionsPanel(this, 
@@ -83,11 +64,11 @@ export default class InstructionsScene extends Phaser.Scene {
             mainTxt = ("在每条路线上，你都可以收集 [img=coin] [color=#FFD700]金币[/color] [img=coin]，\n"+
                        "不同路线上收集到的金币数量不同。\n\n" +
 
-                       "并且，不同路线所需要付出的 [img=button] [color=#e45404]努力程度[/color] [img=button]不同\n\n"+
+                       " 不同路线所需要付出的 [img=button] [color=#e45404]努力程度[/color] [img=button]不同。\n\n"+
                        
-                       "在选择好路线后，你需要尽最大努力通过 \n"+
-                       "[color=#e45404]快速点击加油按钮[/color]来为神奇雨伞  \n"+
-                       "充电，直到在规定时间内达到所需要的努力程度。\n"
+                       "在选择好路线后，你需要尽最大努力\n"+
+                       "[b]快速点击加油按钮[/b] 来为神奇雨伞充电，\n"+
+                       "并在规定时间内达到所需要的努力程度。\n"
                        );
             pageNo = 2;
             this.instructionsPanel = new InstructionsPanel(this, 
@@ -126,7 +107,7 @@ export default class InstructionsScene extends Phaser.Scene {
     
     
     nextScene() {
-        // saveStartData(startTime);           // [for firebase]
+        saveStartData(startTime);           // [for firebase]
         this.scene.start('PracticeTask');
     } 
 }

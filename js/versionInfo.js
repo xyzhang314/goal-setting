@@ -16,7 +16,7 @@ var baseEarn = ((approxTime/60)*hourlyRate);
 var bonusRate = 0.2;			 	 			// additional bonus per coin collected (GBPpence)
 const maxCoins = 266;
 var maxBonus = (maxCoins*bonusRate*2)/100;
-var approxTimeTask = 14;                        // approx time to complete each task
+var approxTimeTask = 15;                        // approx time to complete each task
 var nQuests = 4;  								// how many questionnaires will we ask participant to complete?      
 let allowDevices = false;                		// allow participants to access this task on mobile devices?
 

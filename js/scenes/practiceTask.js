@@ -8,7 +8,7 @@ import TimerPanel from "../elements/timerPanelClicks.js";
 
 // import our custom events center for passsing info between scenes annd relevant data saving function
 import eventsCenter from '../eventsCenter.js'
-// import { savePracTaskData } from "../saveData.js";
+import { savePracTaskData } from "../saveData.js";
 
 // import effort info from versionInfo file
 import { effortTime, pracTrialEfforts, debugging } from "../versionInfo.js";  
@@ -23,7 +23,7 @@ const decisionPointX = 370;    // where the info panel will be triggered (x coor
 const midbridgeX = 735;        // where gems will be displayed (x coord in px)
 const playerVelocity = 1000;   // baseline player velocity (rightward)
 // initialize practice task vars
-var pracTrial = 0; //修改为5即可跳过练习
+var pracTrial = 5; //修改为5即可跳过练习
 var nGems = 0;
 var pracTrialRewards = [  4,   2,   6,   8,   5];
 var gemHeights       = [255, 315, 195,  85, 135];
@@ -180,7 +180,6 @@ export default class PracticeTask extends Phaser.Scene {
         this.trialEndPoint.immovable = true;
         this.trialEndPoint.body.moves = false;
         this.trialEndPoint.allowGravity = false;   
-        
         // 1. Upon entering scene, player moves right until they encounter the decisionPoint
         this.player.sprite.setVelocityX(playerVelocity*2.5);  // positive X velocity -> move R
         this.player.sprite.anims.play('run', true);
@@ -188,14 +187,12 @@ export default class PracticeTask extends Phaser.Scene {
                           function(){eventsCenter.emit('infoPanelOn');}, null, this); // once the player has collided with invisible decision point, emit event
         // once this event is detected, perform the function displayInfoPanel (only once)
         eventsCenter.once('infoPanelOn', displayInfoPanel, this);  
-        
         // 2. After trial outcome (reject, accept+successful, accept+unsuccessful), 
         // player moves right again until they encounter the trial end point
         this.physics.add.collider(this.player.sprite, this.trialEndPoint, 
                           function(){eventsCenter.emit('practiceTrialEndHit');}, null, this); // once the player has collided with invisible trial end point, emit event
         // once this event us detected, perform the function trialEnd (only once)
         eventsCenter.once('practiceTrialEndHit', pracTrialEnd, this);
-        
         // // 3. if desired, add listener functions to pause game when focus taken away
         // // from game browser tab/window [necessary for mobile devices]
         // window.addEventListener('blur', () => { 
@@ -215,7 +212,6 @@ export default class PracticeTask extends Phaser.Scene {
         ///////////SPRITES THAT REQUIRE TIME-STEP UPDATING FOR ANIMATION//////////
         // allow player to move
         this.player.update(); 
-        
         ////////////MOVE ON TO NEXT SCENE WHEN ALL TRIALS HAVE RUN////////////////
         if (pracTrial == nPracTrials) {
             this.registry.set('maxPressCount', maxPressCount);
@@ -224,10 +220,16 @@ export default class PracticeTask extends Phaser.Scene {
     }
     
     nextScene() {
+        // save data
+        var nPracdata = [];
+        for (var i = 0; i < 5; i++)
+        {
+            nPracdata.push('pracTrial'+i)
+        }
+        savePracTaskData(this.registry.get(nPracdata));
         this.scene.start('StartTaskScene');
     }
 }
-
 ///////////////////////////////FUNCTIONS FOR CONTROLLING TRIAL SEQUENCE/////////////////////////////////////
 // 1. Once player has hit the decision point, pop up the choice panel with info for that trial
 var displayInfoPanel = function () {
@@ -365,23 +367,29 @@ var pracTrialEnd = function () {
     }
     // set data to be saved into registry
     this.registry.set("pracTrial"+pracTrial, {pracTrialNo: pracTrial, 
-                                              trialReward: pracTrialReward,
-                                              trialEffort: pracTrialEffort,
-                                              pressCount: pressCount,
-                                              pressTimes: pressTimes,
-                                              trialSuccess: trialSuccess,
-                                              gemsRunningTotal: nGems,
-                                              maxPressCount: this.registry.get('maxPressCount')
-                                             });
+                                            trialReward: pracTrialReward,
+                                            trialEffort: pracTrialEffort,
+                                            pressCount: pressCount,
+                                            pressTimes: pressTimes,
+                                            trialSuccess: trialSuccess,
+                                            gemsRunningTotal: nGems,
+                                            maxPressCount: this.registry.get('maxPressCount')});
+                                    // 'pracTrialNo: ' + pracTrial +', '
+                                    // +'trialReward: ' + pracTrialReward +', '
+                                    // +'trialEffort: ' + pracTrialEffort +', '
+                                    // +'pressCount: ' + pressCount +', '
+                                    // +'pressTimes: ' + pressTimes +', '
+                                    // +'trialSuccess: ' + trialSuccess +', '
+                                    // +'gemsRunningTotal: ' + nGems +', '
+                                    // +'maxPressCount: ' + this.registry.get('maxPressCount') +', '
+
     // save data
-    // savePracTaskData(pracTrial, this.registry.get(`pracTrial${pracTrial}`));    // [for firebase]
-    
+    savePracTaskData(this.registry.get('pracTrial')); //'pracTrial0', 'pracTrial1', 'pracTrial2', 'pracTrial3', 'pracTrial4'
     // iterate trial number
     pracTrial++; 
     // move to next trial
     this.scene.restart();        // [?wrap in delay function to ensure saving works] 
 };
-
 
 //////////////////////MISC FUNCTIONS/////////////////////
 // function to make coin sprites disappear upon contact with player

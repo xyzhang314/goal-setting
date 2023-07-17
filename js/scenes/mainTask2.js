@@ -13,7 +13,7 @@ import QuestionPanel from "../elements/questionPanel.js";
 
 // import our custom events center for passsing info between scenes and relevant data saving function
 import eventsCenter from '../eventsCenter.js'
-//import { saveTaskData, savePostTaskData } from "../saveData.js";
+import { saveTask1Data, saveTask1Ques,saveIntervention } from "../saveData.js";
 
 // import effort info from versionInfo file
 import { effortTime, minPressMax, nBlocks, debugging, maxRews, taskConds } from "../versionInfo.js"; 
@@ -62,7 +62,7 @@ var goalProgressBar;
 var barWidth = 140;
 var barHeight = 40;
 var progressText;
-var prTxt = "          目标\n          进度";
+var prTxt = "           目标\n           进度";
 
 // this function extends Phaser.Scene and includes the core logic for the game
 export default class MainTask2 extends Phaser.Scene {
@@ -210,7 +210,8 @@ export default class MainTask2 extends Phaser.Scene {
         // add coin count text in a fixed position on the screen
         coinsText = this.add
             .text(gameWidth-160, 16, "金币："+nCoins, {
-                font: "18px monospace",
+                //font: "18px monospace",
+                fontFamily: "Microsoft Yahei",
                 fill: "#FFD700",
                 padding: { x: 20, y: 10 },
                 backgroundColor: "#000000"
@@ -229,7 +230,7 @@ export default class MainTask2 extends Phaser.Scene {
             goalProgressBar = this.add.rectangle(decisionPointX+113, 16, Math.round(goalProgress*(barWidth-6)), barHeight-6, 0xFFD700) // initialize at zero
             .setOrigin(0,0) 
             .setScrollFactor(0); 
-            progressText = this.add.text(decisionPointX+12, 16, prTxt, {color: "#000000", font: "18px monospace"})
+            progressText = this.add.text(decisionPointX+12, 16, prTxt, {color: "#000000",fontFamily: "Microsoft Yahei",})
             .setAlign('center')
             .setScrollFactor(0);
             // if first trial2, set goal for this block2
@@ -239,7 +240,6 @@ export default class MainTask2 extends Phaser.Scene {
                 // then grab set goal for this block2 and allow game to continue
                 eventsCenter.once('block'+block2+'goalset', 
                     function(){ blockGoal = this.registry.get('block'+block2+'goal');  // get goal for this block2
-                                //saveTaskData('block'+block2+'goal', blockGoal);        // console.log(blockGoal); 
                                 // restart player
                                 this.player.sprite.setVelocityX(150);  // positive X velocity -> move R
                                 this.player.sprite.anims.play('run', true); 
@@ -251,7 +251,7 @@ export default class MainTask2 extends Phaser.Scene {
             // then allow game to continue
             eventsCenter.once('block'+block2+'answered', 
                 function(){ let gameLiking = this.registry.get('block'+block2+'answer');   
-                            //saveTaskData('block'+block2+'answer', gameLiking); 
+                            // saveIntervention('block'+block2+'answer', gameLiking); 
                             // restart player
                             this.player.sprite.setVelocityX(150);  // positive X velocity -> move R
                             this.player.sprite.anims.play('run', true); 
@@ -308,6 +308,40 @@ export default class MainTask2 extends Phaser.Scene {
     }
     
     nextScene() {
+        // save task0 data [for supabase]
+        var nTask1data = []; 
+        for (var i = 0; i < 43; i++)
+        {
+            nTask1data.push('task1_trial'+i)
+        }
+        saveTask1Data(this.registry.get(nTask1data));
+
+        // save question answer [for supabase]
+        var nTask1question = [];
+        for (var i = 0; i < 3; i++)
+        {
+            nTask1question.push('task1postBlock'+i+"question1", 'task1postBlock'+i+"question2", 'task1postBlock'+i+"question3")
+            //'task'+taskN+gamePhase+'question'+questionNo
+        }
+        saveTask1Ques(this.registry.get(nTask1question));
+
+        // save Goal OR Gamelike score
+        if (taskType == "planning") {
+            var nGoalSet = [];
+            for (var i = 0; i < 4; i++)
+            {
+                nGoalSet.push('block'+i+'goal')
+                //'task'+taskN+gamePhase+'question'+questionNo
+            }
+            saveIntervention(this.registry.get(nGoalSet));
+        }else
+        {var nGameLike = [];
+            for (var i = 0; i < 4; i++)
+            {
+                nGameLike.push('block'+i+'answer')
+                //'task'+taskN+gamePhase+'question'+questionNo
+            }
+            saveIntervention(this.registry.get(nGameLike));}
         this.scene.start('TaskEndScene2');
     }
 }
@@ -533,7 +567,7 @@ var trialEnd2 = function () {
                 // restart coin total and goal progress from 0 after each block2
                 nCoins = 0;
                 goalProgress = 0;
-                prTxt = "          目标\n          进度";
+                prTxt = "           目标\n           进度";
                 // set goal or get control rating for next block2
                 if (taskType == "planning") {
                     this.goalPanel = new SetGoalPanel(this, mapWidth-gameWidth/2, gameHeight/2, block2, maxRews[block2]);   
@@ -566,49 +600,44 @@ var getBlockEndRatings2 = function (scene) {
         // let's do this a long-winded way for easiness...[should be a function]
         gamePhase = 'postBlock'+block2;
         ///////////////////QUESTION ONE////////////////////
-        var mainTxt = 'During the last block, how much did you\n'+
-                      'FEEL PLEASED\n'+ 
-                      'when you collected the coins?\n\n\n'+
-                      'Please rate from 0 to 100 on the scale\n'+ 
-                      'below, where\n\n'+
-                      '  0 =             and            100 = \n'+  
-                      ' "not at all"                    "most possible" '
+        var mainTxt = '在刚才一轮游戏中，当你收集金币时\n'+
+                      '你会感到多大的愉快感？\n\n\n'+
+                      '请从 0 到 100 进行评分，其中\n'+ 
+                      '\n'+
+                      '    0 = “完全没有”           100 = “非常明显”    '
         var questionNo = 1;
         
         scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,
                                                taskN, gamePhase, questionNo, mainTxt);
-        var coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
-        coinImg.setScale(2);
+        // var coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
+        // coinImg.setScale(2);
         
         ///////////////////QUESTION TWO////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question1complete', function () {
-            coinImg.destroy();
+            // coinImg.destroy();
             //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
-            mainTxt = 'During the last block, how much did you\n'+
-                      'FEEL A SENSE OF ACHIEVEMENT when you\n'+ 
-                      'sucessfully hit the required power level?\n\n\n'+
-                      'Please rate from 0 to 100 on the scale\n'+ 
-                      'below, where\n\n'+
-                      '  0 =             and            100 = \n'+  
-                      ' "not at all"                    "most possible" '
+            mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
+                      '你会感到多大的成就感？\n\n\n'+
+                      '请从 0 到 100 进行评分，其中\n'+ 
+                      '\n'+
+                      '    0 = “完全没有”           100 = “非常明显”    '
             questionNo = 2;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300, 
                                                    taskN, gamePhase, questionNo, mainTxt);
-            coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
-            coinImg.setScale(2);
+            // coinImg = scene.add.image(mapWidth-gameWidth/2, gameHeight/2-49, 'coin');
+            // coinImg.setScale(2);
         }, this);    
 
         ///////////////////QUESTION THREE////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
-            coinImg.destroy();
+            // coinImg.destroy();
             //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
-            mainTxt = 'During the last block, how much did you\n'+
-                      'FEEL BORED?\n'+ 
-                      'Please rate from 0 to 100 on the scale\n'+ 
-                      'below, where\n\n'+
-                      '  0 =             and            100 = \n'+  
-                      ' "not at all"                    "most possible" '
+            mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
+                      '你会感到有多无聊？\n\n\n'+
+                      '请从 0 到 100 进行评分，其中\n'+ 
+                      '\n'+
+                      '    0 = “完全没有”           100 = “非常明显”    '
             questionNo = 3;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,
@@ -617,7 +646,7 @@ var getBlockEndRatings2 = function (scene) {
         
         // end scene
         eventsCenter.once('task'+taskN+gamePhase+'question3complete', function () {
-            coinImg.destroy();
+            // coinImg.destroy();
             //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));    // [firebase]
         }, this);
 };

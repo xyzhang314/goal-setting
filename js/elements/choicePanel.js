@@ -14,9 +14,9 @@ export default class ChoicePanel {
     // set properties of the panel (text content and colours)    
     var titleTxt; var mainTxt; var buttonTxt;
     titleTxt = '请选择路线！';
-    mainTxt = ('[color=#FFD700]'+trialReward1+' 金币[/color]        '+
+    mainTxt = ('[color=#FFD700]'+trialReward1+' 金币[/color]             '+
                '[color=#FFD700]'+trialReward2+' 金币[/color]\n'+
-               '[color=#FFD700]'+(trialEffortPropMax1*100).toFixed()+'% 努力[/color]      '+        
+               '[color=#FFD700]'+(trialEffortPropMax1*100).toFixed()+'% 努力[/color]            '+        
                '[color=#FFD700]'+(trialEffortPropMax2*100).toFixed()+'% 努力[/color]');      ////#8BE1EB 
     backgrCol = 0x815532;
     titleCol = 0xf57f17;  
