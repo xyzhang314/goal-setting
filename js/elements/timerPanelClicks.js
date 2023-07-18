@@ -23,11 +23,11 @@ export default class TimerPanel {
         
         // set main text depending if practice (callibration) or real (main task) trial
         if (practiceOrReal == 0 ) {
-            timeText = ('                请点击 加油 按钮！              \n\n'+
+            timeText = ('请点击 加油 按钮！\n\n'+
                         '剩余时间：'+(scene.timeLeft/1000).toFixed(2)+' 秒');
             var backgrCol =  0x9c73ae;
         } else {
-            timeText = ('                请点击 加油 按钮！              \n\n'+
+            timeText = ('请点击 加油 按钮！\n\n'+
                         '剩余时间：'+(scene.timeLeft/1000).toFixed(2)+' 秒');
             var backgrCol = 0x2F4F4F;
         }
@@ -61,7 +61,7 @@ export default class TimerPanel {
 var updateTimer = function(scene, trialEffort, timeText, timeLimit, timerDelay, mainPanel, practiceOrReal) {
     // update timer text
     scene.timeLeft -= timerDelay;
-    timeText = ('                请点击 加油 按钮！              \n\n'+
+    timeText = ('请点击 加油 按钮！\n\n'+
                 '剩余时间：'+(scene.timeLeft/1000).toFixed(2)+' 秒');
     mainPanel.children[0].children[1].setText(timeText);           // = mainPanel.dialog.text (when dialog has no title)
     // update effort progress bar
@@ -148,8 +148,8 @@ var createDialog = function (scene, titleText, mainText, buttonText, backgrCol) 
         space: {
             content: 30, 
             action: 20, 
-            left: 10,
-            right: 10,
+            left: 100,
+            right: 100,
             top: 15,
             bottom: 30,
         },
@@ -160,7 +160,7 @@ var createDialog = function (scene, titleText, mainText, buttonText, backgrCol) 
             actions: 'center',
         },
         expand: {
-            content: false
+            content: true
         }
         })
     .layout();
