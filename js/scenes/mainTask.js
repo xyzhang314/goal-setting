@@ -513,7 +513,7 @@ var getBlockEndRatings = function (scene) {
                       '你会感到多大的愉快感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '    0 = “完全没有”           100 = “非常明显”    '
+                      '0 = “完全没有”           100 = “非常明显”'
         var questionNo = 1;
         
         scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,
@@ -528,7 +528,7 @@ var getBlockEndRatings = function (scene) {
                       '你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '    0 = “完全没有”           100 = “非常明显”    '
+                      '0 = “完全没有”           100 = “非常明显”'
             questionNo = 2;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300, 
@@ -544,7 +544,7 @@ var getBlockEndRatings = function (scene) {
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '    0 = “完全没有”           100 = “非常明显”    '
+                      '0 = “完全没有”           100 = “非常明显”'
             questionNo = 3;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,

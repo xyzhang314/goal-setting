@@ -6,13 +6,14 @@ export default class SetGoalPanel {
     constructor(scene, x, y, block, maxRewBlock) {
     this.scene = scene;
 
-    var mainTxt =  '请设定在接下来一轮的游戏中，\n'+
-                   '你想要收集的金币总数。\n\n'+
-                   '              在本轮游戏中，如果你 [color=#FFD700]每次都              \n'+
-                   '              选择金币数量最多的那条路径[/color]，              \n'+
-                   '          你将最终可以收集 [color=#FFD700]'+maxRewBlock+' 金币[/color]。         \n\n'+
-                   '   请拖动下方滑动条来设定目标，   \n'+
-                   '   点击 [b]确认[/b] 按钮开始游戏。\n';
+    var mainTxt =  ' 请设定在接下来一轮的游戏中，\n'+
+                   ' 你想要收集的金币总数。\n\n'+
+                   '本轮游戏中，如果你[color=#FFD700]每次都选\n'+
+                   '择金币数量最多的那条路径[/color]，你将\n'+
+                   '最终可以收集到 [color=#FFD700]'+maxRewBlock+' 金币[/color]。\n'+
+                   '（本轮游戏的最大金币总数）\n\n'+
+                   ' 请拖动下方滑动条来设定目标，\n'+
+                   ' 点击 [b]确认[/b] 按钮开始游戏。\n';
     
     var buttonTxt = '确认';    
 
@@ -108,8 +109,8 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
         title: 25,
         content: 20,
         action: 10,
-        left: 10,
-        right: 10,
+        left: 86,
+        right: 86,
         top: 10,
         bottom: 10,
     },

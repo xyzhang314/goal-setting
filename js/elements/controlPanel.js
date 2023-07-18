@@ -16,7 +16,7 @@ export default class ControlPanel {
 
                    '你喜欢玩 [b]'+controlItem+'[/b] 吗？\n\n'+
                    '请拖动下方滑动条进行评分，其中\n'+
-                   '      0 = “不喜欢”          100 = “非常喜欢”     \n\n'+
+                   '0 = “不喜欢”          100 = “非常喜欢”\n\n'+
 
                    '当你准备好时，请点击 [b]确认[/b] 按钮开始游戏。\n';
     
@@ -114,8 +114,8 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
         title: 25,
         content: 20,
         action: 10,
-        left: 10,
-        right: 10,
+        left: 41,
+        right: 41,
         top: 10,
         bottom: 10,
     },
