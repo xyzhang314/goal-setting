@@ -32,9 +32,9 @@ var maxRews = [65, 65, 67, 69];					// max coins participants could earn per blo
 var randCond;
 let r = Math.random();                          // (no random seed availble for this rng as this depends on browser)
 if (r < 0.5) {
-	randCond = "control";
+	randCond = "planning";
 } else {
-	randCond = "control";
+	randCond = "planning";
 }
 var taskConds = ["baseline", randCond];			// all participants complete same baseline condition
 

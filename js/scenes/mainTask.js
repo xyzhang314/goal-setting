@@ -145,7 +145,7 @@ export default class MainTask extends Phaser.Scene {
         coinsText = this.add
             .text(gameWidth-160, 16, "金币："+nCoins, {
                 //font: "18px monospace",
-                // fontFamily: "Microsoft Yahei",
+                fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                 fill: "#FFD700",
                 padding: { x: 20, y: 10 },
                 backgroundColor: "#000000"
@@ -341,7 +341,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     // font: "20px monospace",
-                                    // fontFamily: "Microsoft Yahei",
+                                    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -379,7 +379,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     // font: "20px monospace",
-                                    // fontFamily: "Microsoft Yahei",
+                                    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -414,7 +414,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX, gameHeight/2-160,  
                                  "真可惜，这次还不够快！", {
                                     // font: "20px monospace",
-                                    // fontFamily: "Microsoft Yahei",
+                                    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -524,8 +524,8 @@ var getBlockEndRatings = function (scene) {
         ///////////////////QUESTION TWO////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question1complete', function () {
             // coinImg.destroy();
-            mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
-                      '你会感到多大的成就感？\n\n\n'+
+            mainTxt = '在刚才一轮游戏中，当你成功收集\n'+
+                      '金币时，你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
                       '0 = “完全没有”        100 = “非常明显”'

@@ -104,8 +104,8 @@ var createDialog = function (scene, gamePhase, questionNo, mainTxt, buttonTxt) {
         title: 25,
         content: 20,
         action: 10,
-        left: 65,
-        right: 65,
+        left: 70,
+        right: 70,
         top: 10,
         bottom: 10,
     },
@@ -159,6 +159,7 @@ var createNumberBar = function (scene) {
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
             fontSize: '20px', fixedWidth: 50, fixedHeight: 45,
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             valign: 'center', halign: 'center'
         }),
 

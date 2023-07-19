@@ -40,7 +40,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x000000),
         text: scene.add.text(0, 0, titleTxtB, {
             fontSize: '24px',
-            font: "26px monospace",
+            // font: "26px monospace",
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',

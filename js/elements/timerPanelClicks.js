@@ -152,8 +152,8 @@ var createDialog = function (scene, titleText, mainText, buttonText, backgrCol) 
         space: {
             content: 30, 
             action: 20, 
-            left: 102,
-            right: 102,
+            left: 103,
+            right: 103,
             top: 25,
             bottom: 50,
         },
