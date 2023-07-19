@@ -252,7 +252,7 @@ var displayInfoPanel = function () {
     let buttonTxt = "开始";
     let pageNo = 4;
     this.instructionsPanel = new InstructionsPanel(this, 
-                                                   decisionPointX+20, gameHeight/2-120, 
+                                                   gameWidth/2, gameHeight/2-120, 
                                                    pageNo, titleTxt, mainTxt, buttonTxt);
     
     // once choice is entered, get choice info and route to relevant next step
@@ -262,7 +262,7 @@ var displayInfoPanel = function () {
 // 2. Once participant has indicated they are ready, let them try out the effort panel 
 var doChoice = function () {
     // timer panel pops up  
-    this.timerPanel = new TimerPanel(this, decisionPointX+20, gameHeight/2-130, effortTime, pracTrialEffort, practiceOrReal); 
+    this.timerPanel = new TimerPanel(this, gameWidth/2, gameHeight/2-130, effortTime, pracTrialEffort, practiceOrReal); 
     // and play player 'power-up' animation
     this.player.sprite.anims.play('powerup', true);
     
@@ -282,7 +282,7 @@ var effortOutcome = function() {
         // add overlap colliders so coins  on either route disappear when overlap with player body
         this.physics.add.overlap(this.player.sprite, this.gems.sprite, collectGems, null, this); 
         // display success message for a couple of seconds,
-        feedback = this.add.text(decisionPointX+20, gameHeight/2-100,  
+        feedback = this.add.text(gameWidth/2, gameHeight/2-100,  
                                  "呜呼~你成功啦！", {
                                     //font: "20px monospace",
                                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
@@ -317,7 +317,7 @@ var effortOutcome = function() {
     else {  // else if fail to reach trial effort threshold
         trialSuccess = 0;
         // display failure message for a couple of seconds
-        feedback = this.add.text(decisionPointX, gameHeight/2-100,  
+        feedback = this.add.text(gameWidth/2, gameHeight/2-100,  
                                  "真可惜，这次还不够快！", {
                                     //font: "20px monospace",
                                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',

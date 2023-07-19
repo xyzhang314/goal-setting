@@ -92,8 +92,8 @@ export function runTask() {
 };
 
 // if desired, block access to game on phones/tablets
-// if (allowDevices == false) {
-//     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-//        alert("Sorry, this game does not work on mobile devices!");
-//     }
-// }
+if (allowDevices == false) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+       alert("Sorry, this game does not work on mobile devices!");
+    }
+}

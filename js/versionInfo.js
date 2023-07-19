@@ -18,7 +18,7 @@ const maxCoins = 266;
 var maxBonus = (maxCoins*bonusRate*2)/100;
 var approxTimeTask = 15;                        // approx time to complete each task
 var nQuests = 4;  								// how many questionnaires will we ask participant to complete?      
-let allowDevices = false;                		// allow participants to access this task on mobile devices?
+let allowDevices = true;                		// allow participants to access this task on mobile devices?
 
 // set effort-related task variables
 var effortTime = 10000;					   		// time participant will have to try and exert effort (ms)

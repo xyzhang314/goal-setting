@@ -236,7 +236,7 @@ export default class MainTask2 extends Phaser.Scene {
             // if first trial2, set goal for this block2
             if (trial2 == 0) {
                 // make player wait and popup goal-setting panel
-                this.goalPanel = new SetGoalPanel(this, decisionPointX+40, gameHeight/2, block2, maxRews[block2]);   
+                this.goalPanel = new SetGoalPanel(this, gameWidth/2, gameHeight/2, block2, maxRews[block2]);   
                 // then grab set goal for this block2 and allow game to continue
                 eventsCenter.once('block'+block2+'goalset', 
                     function(){ blockGoal = this.registry.get('block'+block2+'goal');  // get goal for this block2
@@ -247,7 +247,7 @@ export default class MainTask2 extends Phaser.Scene {
             }
         } else if (trial2 == 0) {
             //this.physics.pause();
-            this.likingPanel = new ControlPanel(this, decisionPointX+40, gameHeight/2, block2);     
+            this.likingPanel = new ControlPanel(this, gameWidth/2, gameHeight/2, block2);     
             // then allow game to continue
             eventsCenter.once('block'+block2+'answered', 
                 function(){ let gameLiking = this.registry.get('block'+block2+'answer');   
@@ -361,7 +361,7 @@ var displayChoicePanel2 = function () {
     this.coins2 = new Coins(this, midbridgeX-(trialReward2*30)/2, 285, trialReward2); // coins on bridge
     
     // popup choice panel with relevant trial2 info
-    this.choicePanel = new ChoicePanel(this, decisionPointX+40, gameHeight/2-140, 
+    this.choicePanel = new ChoicePanel(this, gameWidth/2, gameHeight/2-140, 
                                        trialReward1, trialEffortPropMax1, trialEffort1, 
                                        trialReward2, trialEffortPropMax2, trialEffort2); 
     
@@ -380,7 +380,7 @@ var doChoice2 = function () {
     // if participant chooses the high effort option
     if (choice == '路线 1') {      
         // timer panel pops up  
-        this.timerPanel = new TimerPanel(this, decisionPointX+20, gameHeight/2-160, effortTime, trialEffort1, practiceOrReal) 
+        this.timerPanel = new TimerPanel(this, gameWidth/2, gameHeight/2-160, effortTime, trialEffort1, practiceOrReal) 
         // and play player 'power-up' animation
         this.player.sprite.anims.play('powerup', true);
         // until time limit reached:
@@ -388,7 +388,7 @@ var doChoice2 = function () {
         }
     else {  // if participant chooses the low effort option
         // timer panel pops up  
-        this.timerPanel = new TimerPanel(this, decisionPointX+20, gameHeight/2-160, effortTime, trialEffort2, practiceOrReal) 
+        this.timerPanel = new TimerPanel(this, gameWidth/2, gameHeight/2-160, effortTime, trialEffort2, practiceOrReal) 
         // and play player 'power-up' animation
         this.player.sprite.anims.play('powerup', true);
         // until time limit reached:
@@ -408,7 +408,7 @@ var effortOutcome2 = function() {
         // add overlap colliders so coins disappear when overlap with player body
         this.physics.add.overlap(this.player.sprite, this.coins1.sprite, collectCoins2, null, this); 
         // display success message for a couple of seconds,
-        feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
+        feedback = this.add.text(gameWidth/2, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     //font: "20px monospace",
                                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
@@ -446,7 +446,7 @@ var effortOutcome2 = function() {
         // add overlap colliders so coins disappear when overlap with player body
         this.physics.add.overlap(this.player.sprite, this.coins2.sprite, collectCoins2, null, this); 
         // display success message for a couple of seconds,
-        feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
+        feedback = this.add.text(gameWidth/2, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     //font: "20px monospace",
                                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
@@ -480,7 +480,7 @@ var effortOutcome2 = function() {
     } else {  // else if fail to reach trial2 effort threshold
         trialSuccess = 0;
         // display failure message for a couple of seconds
-        feedback = this.add.text(decisionPointX, gameHeight/2-160,  
+        feedback = this.add.text(gameWidth/2, gameHeight/2-160,  
                                  "真可惜，这次还不够快！", {
                                     //font: "20px monospace",
                                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
