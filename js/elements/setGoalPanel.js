@@ -83,7 +83,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, '请设定目标', {
             fontSize: '24px',
-            //fontFamily: "Microsoft Yahei",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',
         space: {
@@ -97,7 +97,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
         font: '26px monospace',
         fontSize: '21px',
-        // fontFamily: "Microsoft Yahei",
+        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         align: 'center'
     }),
 
@@ -134,7 +134,7 @@ var createLabel = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, text, {
             fontSize: '21px',
-            // fontFamily: "Microsoft Yahei",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',
         width: 40,

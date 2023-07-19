@@ -78,7 +78,7 @@ var createDialog = function (scene, titleTxt, mainTxt, buttonTxt) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleTxt, {
             fontSize: '24px',
-            // fontFamily: "Microsoft Yahei",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',
         space: {
@@ -91,7 +91,7 @@ var createDialog = function (scene, titleTxt, mainTxt, buttonTxt) {
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {fontSize: '20px', 
                                                         // font: '26px monospace', 
-                                                        // fontFamily: "Microsoft Yahei",
+                                                        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                                                         align: 'center' //color: '#222222'
                                                         }),
 
@@ -129,7 +129,7 @@ var createLabel = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
             fontSize: '20px',
-            //fontFamily: "Microsoft Yahei",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             //font: '18px monospace',
         }),
         align: 'center',

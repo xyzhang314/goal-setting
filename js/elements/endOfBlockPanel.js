@@ -40,8 +40,8 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x000000),
         text: scene.add.text(0, 0, titleTxtB, {
             fontSize: '24px',
-            font: "26px monospace"
-            // fontFamily: "Microsoft Yahei",
+            font: "26px monospace",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',
         space: {
@@ -53,7 +53,10 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxtB, 
-                                        {fontSize: '20px', align: 'center', color: '#000000'}),
+                                        {fontSize: '20px', 
+                                        align: 'center', 
+                                        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif', 
+                                        color: '#000000'}),
 
     actions: [
         createLabelB(scene, buttonTxtB)
@@ -88,7 +91,7 @@ var createLabelB = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0x5e81a2),
         text: scene.add.text(0, 0, text, {
             fontSize: '21px',
-            // fontFamily: "Microsoft Yahei",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',
         width: 40,

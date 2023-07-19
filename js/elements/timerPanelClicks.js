@@ -144,12 +144,16 @@ var createMainPanel = function (scene, titleText, timeText, buttonText, trialEff
 var createDialog = function (scene, titleText, mainText, buttonText, backgrCol) {
     var textbox = scene.rexUI.add.dialog({
         background: scene.rexUI.add.roundRectangle(0, 0, 400, 400, 20, backgrCol), 
-        content: scene.rexUI.add.BBCodeText(0, 0, mainText, {fontSize: '20px', align: 'center'}),
+        content: scene.rexUI.add.BBCodeText(0, 0, mainText, {
+            fontSize: '20px', 
+            align: 'center', 
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
+        }),
         space: {
             content: 30, 
-            //action: 20, 
-            left: 95,
-            right: 95,
+            action: 20, 
+            left: 102,
+            right: 102,
             top: 25,
             bottom: 50,
         },
@@ -174,7 +178,7 @@ var createButton = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, undefined, undefined, 40, 0xe45404),  // circle
         text: scene.add.text(0, 0, text, {
             fontSize: '22px',
-            // fontFamily: "Microsoft Yahei",
+            fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',
         width: 40,
