@@ -17,7 +17,7 @@ export default class InstructionsPanel {
     var instrPanel = createInstrPanel(scene, pageNo, titleTxt, mainTxt, buttonTxt)
         .setPosition(x, y)
         .layout()
-        .popUp(500); 
+        .popUp(500); //控制 面板加载时间
     }  
 }
 
@@ -33,7 +33,7 @@ var createInstrPanel = function (scene, pageNo, titleTxt, mainTxt, buttonTxt) {
             0, // proportion
             'center', // align
             0, // paddingConfig
-            false, // expand
+            true, // expand
         )
     .layout();
     
@@ -60,22 +60,23 @@ var createDialog = function (scene, pageNo, titleTxt, mainTxt, buttonTxt) {
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleTxt, {
-                    fontSize: '24px',
-                    fontFamily: "Microsoft Yahei",
+                    fontSize: '22px',
+                    //font: '20px monospace',
                     }),
         align: 'center',
+
         space: {
             left: 15,
             right: 15,
-            top: 10,
-            bottom: 10
+            top: -5,
+            bottom: -5
         }
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
-        fontSize: "21px",
+        fontSize: "20px",
         font: '26px monospace',
-        fontFamily: "Microsoft Yahei",
+        // fontFamily: "Microsoft Yahei",
         align: 'center',
         color: '#000',
         underline: {color: '#000',
@@ -88,9 +89,9 @@ var createDialog = function (scene, pageNo, titleTxt, mainTxt, buttonTxt) {
     ],
         
     space: {
-        title: 25,
-        content: 10,
-        action: 10,
+        title: 25, //段落距离标题
+        content: 10, //段落距离底端
+        //action: 10,  
         left: 10,
         right: 10,
         top: 10,
@@ -111,13 +112,14 @@ var createDialog = function (scene, pageNo, titleTxt, mainTxt, buttonTxt) {
 /////////button labels////////////////////////////
 var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
-        background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, buttonCol),
+        background: scene.rexUI.add.roundRectangle(0, 0, 70, 52, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
-            fontFamily: "Microsoft Yahei",
+            fontSize: '20px',
+            //fontFamily: 'sans-serif',
         }),
         align: 'center',
-        width: 40,
+        width: 60,
+        height: 40,
         space: {
             left: 10,
             right: 10,

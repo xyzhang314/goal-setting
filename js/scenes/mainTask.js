@@ -145,7 +145,7 @@ export default class MainTask extends Phaser.Scene {
         coinsText = this.add
             .text(gameWidth-160, 16, "金币："+nCoins, {
                 //font: "18px monospace",
-                fontFamily: "Microsoft Yahei",
+                // fontFamily: "Microsoft Yahei",
                 fill: "#FFD700",
                 padding: { x: 20, y: 10 },
                 backgroundColor: "#000000"
@@ -341,7 +341,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     // font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -379,7 +379,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     // font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -414,7 +414,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX, gameHeight/2-160,  
                                  "真可惜，这次还不够快！", {
                                     // font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },

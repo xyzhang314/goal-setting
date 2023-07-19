@@ -23,7 +23,7 @@ const decisionPointX = 370;    // where the info panel will be triggered (x coor
 const midbridgeX = 735;        // where gems will be displayed (x coord in px)
 const playerVelocity = 1000;   // baseline player velocity (rightward)
 // initialize practice task vars
-var pracTrial = 5; //修改为5即可跳过练习
+var pracTrial = 0; //修改为5即可跳过练习
 var nGems = 0;
 var pracTrialRewards = [  4,   2,   6,   8,   5];
 var gemHeights       = [255, 315, 195,  85, 135];
@@ -144,7 +144,7 @@ export default class PracticeTask extends Phaser.Scene {
         gemText = this.add
             .text(gameWidth-160, 16, "宝石："+nGems, {
                 //font: "18px monospace",
-                fontFamily: "Microsoft Yahei",
+                // fontFamily: "Microsoft Yahei",
                 fill: "#fc94c4",
                 padding: { x: 20, y: 10 },
                 backgroundColor: "#000000"
@@ -243,8 +243,8 @@ var displayInfoPanel = function () {
     this.gems = new Gems(this, midbridgeX-(pracTrialReward*30)/2, gemHeight, pracTrialReward); 
     
     // popup choice panel with relevant trial info
-    let titleTxt = ("练习 "+(pracTrial+1)+" / "+nPracTrials+"");
-    let mainTxt = ("  请尽最大努力快速点击 [color=#ffffff]加油[/color] 按钮， \n"+
+    let titleTxt = ("\n练习 "+(pracTrial+1)+" / "+nPracTrials+"\n");
+    let mainTxt = (" 请尽最大努力快速点击 [color=#ffffff]加油[/color] 按钮，\n"+
                    //"until the power bar shows you are [color=#ffffff]100% charged[/color].\n\n"+
                    "直到进度条 [color=#ffffff]完全充满[/color]。\n\n"+
                    "付出努力越多，收获金币也越多！\n\n"+
@@ -285,7 +285,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-100,  
                                  "呜呼~你成功啦！", {
                                     //font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -320,7 +320,7 @@ var effortOutcome = function() {
         feedback = this.add.text(decisionPointX, gameHeight/2-100,  
                                  "真可惜，这次还不够快！", {
                                     //font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
