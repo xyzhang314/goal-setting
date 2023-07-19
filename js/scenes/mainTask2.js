@@ -62,7 +62,7 @@ var goalProgressBar;
 var barWidth = 140;
 var barHeight = 40;
 var progressText;
-var prTxt = "           目标\n           进度";
+var prTxt = "          目标\n          进度";
 
 // this function extends Phaser.Scene and includes the core logic for the game
 export default class MainTask2 extends Phaser.Scene {
@@ -616,8 +616,8 @@ var getBlockEndRatings2 = function (scene) {
         eventsCenter.once('task'+taskN+gamePhase+'question1complete', function () {
             // coinImg.destroy();
             //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
-            mainTxt = '在刚才一轮游戏中，当你成功收集金币时\n'+
-                      '你会感到多大的成就感？\n\n\n'+
+            mainTxt = '在刚才一轮游戏中，当你成功收集\n'+
+                      '金币时,你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
                       '0 = “完全没有”        100 = “非常明显”'
@@ -633,8 +633,8 @@ var getBlockEndRatings2 = function (scene) {
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
             // coinImg.destroy();
             //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
-            mainTxt = '在刚才一轮游戏中，当你收集\n'+
-                      '金币时，你会感到有多无聊？\n\n\n'+
+            mainTxt = '在刚才一轮游戏中，当你收集金币时，\n'+
+                      '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
                       '0 = “完全没有”        100 = “非常明显”'
