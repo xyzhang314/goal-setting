@@ -74,7 +74,7 @@ export function runTask() {
         
         // Make div full height of browser and keep the ratio of game resolution
         let div = document.getElementById('game-container');
-        div.style.width  = (window.innerHeight * game_ratio) + 'px';
+        div.style.width  = window.innerWidth + 'px';
         div.style.height = window.innerHeight + 'px';
         
         // Check if device DPI messes up the width-height-ratio
