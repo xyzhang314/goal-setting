@@ -211,7 +211,7 @@ export default class MainTask2 extends Phaser.Scene {
         coinsText = this.add
             .text(gameWidth-160, 16, "金币："+nCoins, {
                 //font: "18px monospace",
-                fontFamily: "Microsoft Yahei",
+                // fontFamily: "Microsoft Yahei",
                 fill: "#FFD700",
                 padding: { x: 20, y: 10 },
                 backgroundColor: "#000000"
@@ -230,7 +230,7 @@ export default class MainTask2 extends Phaser.Scene {
             goalProgressBar = this.add.rectangle(decisionPointX+113, 18, Math.round(goalProgress*(barWidth-6)), barHeight-4, 0xFFD700) // initialize at zero
             .setOrigin(0,0) 
             .setScrollFactor(0); 
-            progressText = this.add.text(decisionPointX+12, 16, prTxt, {color: "#000000",fontFamily: "Microsoft Yahei",})
+            progressText = this.add.text(decisionPointX+12, 16, prTxt, {color: "#000000",})
             .setAlign('center')
             .setScrollFactor(0);
             // if first trial2, set goal for this block2
@@ -411,7 +411,7 @@ var effortOutcome2 = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     //font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -449,7 +449,7 @@ var effortOutcome2 = function() {
         feedback = this.add.text(decisionPointX+20, gameHeight/2-160,  
                                  "呜呼~你成功啦！", {
                                     //font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -483,7 +483,7 @@ var effortOutcome2 = function() {
         feedback = this.add.text(decisionPointX, gameHeight/2-160,  
                                  "真可惜，这次还不够快！", {
                                     //font: "20px monospace",
-                                    fontFamily: "Microsoft Yahei",
+                                    // fontFamily: "Microsoft Yahei",
                                     fill: "#ffffff",
                                     align: 'center',
                                     padding: { x: 20, y: 10 },
@@ -604,7 +604,7 @@ var getBlockEndRatings2 = function (scene) {
                       '你会感到多大的愉快感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '0 = “完全没有”           100 = “非常明显”'
+                      '0 = “完全没有”        100 = “非常明显”'
         var questionNo = 1;
         
         scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,
@@ -620,7 +620,7 @@ var getBlockEndRatings2 = function (scene) {
                       '你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '0 = “完全没有”           100 = “非常明显”'
+                      '0 = “完全没有”        100 = “非常明显”'
             questionNo = 2;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300, 
@@ -637,7 +637,7 @@ var getBlockEndRatings2 = function (scene) {
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
                       '\n'+
-                      '0 = “完全没有”           100 = “非常明显”'
+                      '0 = “完全没有”        100 = “非常明显”'
             questionNo = 3;
             
             scene.questionPanel = new QuestionPanel(scene, mapWidth-gameWidth/2, 300,

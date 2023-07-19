@@ -14,9 +14,9 @@ export default class ChoicePanel {
     // set properties of the panel (text content and colours)    
     var titleTxt; var mainTxt; var buttonTxt;
     titleTxt = '请选择路线！';
-    mainTxt = ('[color=#FFD700]'+trialReward1+' 金币[/color]             '+
+    mainTxt = ('[color=#FFD700]'+trialReward1+' 金币[/color]       '+
                '[color=#FFD700]'+trialReward2+' 金币[/color]\n'+
-               '[color=#FFD700]'+(trialEffortPropMax1*100).toFixed()+'% 努力[/color]            '+        
+               '[color=#FFD700]'+(trialEffortPropMax1*100).toFixed()+'% 努力[/color]      '+        
                '[color=#FFD700]'+(trialEffortPropMax2*100).toFixed()+'% 努力[/color]');      ////#8BE1EB 
     backgrCol = 0x815532;
     titleCol = 0xf57f17;  
@@ -78,7 +78,7 @@ var createDialog = function (scene, titleTxt, mainTxt, buttonTxt) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleTxt, {
             fontSize: '24px',
-            fontFamily: "Microsoft Yahei",
+            // fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {
@@ -90,8 +90,8 @@ var createDialog = function (scene, titleTxt, mainTxt, buttonTxt) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {fontSize: '20px', 
-                                                        //font: '26px monospace', 
-                                                        fontFamily: "Microsoft Yahei",
+                                                        // font: '26px monospace', 
+                                                        // fontFamily: "Microsoft Yahei",
                                                         align: 'center' //color: '#222222'
                                                         }),
 
@@ -129,11 +129,12 @@ var createLabel = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
             fontSize: '20px',
-            fontFamily: "Microsoft Yahei",
+            //fontFamily: "Microsoft Yahei",
             //font: '18px monospace',
         }),
         align: 'center',
         width: 40,
+        height: 25,
         space: {
             left: 20,
             right: 20,

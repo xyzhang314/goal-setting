@@ -83,7 +83,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, '请设定目标', {
             fontSize: '24px',
-            fontFamily: "Microsoft Yahei",
+            //fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {
@@ -97,7 +97,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
         font: '26px monospace',
         fontSize: '21px',
-        fontFamily: "Microsoft Yahei",
+        // fontFamily: "Microsoft Yahei",
         align: 'center'
     }),
 
@@ -134,7 +134,7 @@ var createLabel = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, text, {
             fontSize: '21px',
-            fontFamily: "Microsoft Yahei",
+            // fontFamily: "Microsoft Yahei",
         }),
         align: 'center',
         width: 40,
@@ -163,7 +163,7 @@ var createNumberBar = function (scene, maxRewBlock) {
         },
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
-            fontSize: '20px', fontFamily: "Microsoft Yahei", fixedWidth: 50, 
+            fontSize: '20px', fixedWidth: 50, 
             fixedHeight: 45, valign: 'center', halign: 'center',
         }),
 

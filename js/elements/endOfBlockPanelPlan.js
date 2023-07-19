@@ -41,7 +41,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x000000),
         text: scene.add.text(0, 0, titleTxtB, {
             fontSize: '24px',
-            fontFamily: "Microsoft Yahei",
+            // fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {
@@ -53,7 +53,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxtB, 
-                                        {fontSize: '20px', fontFamily: "Microsoft Yahei", align: 'center', color: '#000000'}),
+                                        {fontSize: '20px', align: 'center', color: '#000000'}),
 
     actions: [
         createLabelB(scene, buttonTxtB)
@@ -88,7 +88,8 @@ var createLabelB = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0x5e81a2),
         text: scene.add.text(0, 0, text, {
             fontSize: '21px',
-            fontFamily: "Microsoft Yahei",
+            font: "26px monospace"
+            //fontFamily: "Microsoft Yahei",
         }),
         align: 'center',
         width: 40,

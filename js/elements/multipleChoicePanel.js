@@ -97,7 +97,8 @@ var createDialog = function (scene, titleText, questionNo, questionText, respons
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleText, {
-            fontSize: '24px', fontFamily: "Microsoft Yahei",
+            fontSize: '24px', 
+            // fontFamily: "Microsoft Yahei",
             }),
         align: 'center',
         space: {
@@ -109,7 +110,7 @@ var createDialog = function (scene, titleText, questionNo, questionText, respons
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, questionText, {fontSize: '21px',
-                                                             fontFamily: "Microsoft Yahei",
+                                                            //  fontFamily: "Microsoft Yahei",
                                                             //font: '20px monospace', 
                                                             align: 'center' //color: '#222222'
                                                        }),
@@ -150,7 +151,7 @@ var createLabel = function (scene, text) {
         text: scene.add.text(0, 0, text, {
             fontSize: '21px',
             //font: '18px monospace',
-            fontFamily: "Microsoft Yahei",
+            // fontFamily: "Microsoft Yahei",
         }),
         align: 'center',
         width: 40,
@@ -170,7 +171,7 @@ var createButton = function (scene, text) {
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
             fontSize: '21px',
-            fontFamily: "Microsoft Yahei",
+            // fontFamily: "Microsoft Yahei",
         }),
         space: {
             left: 10,

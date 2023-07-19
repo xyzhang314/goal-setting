@@ -40,7 +40,7 @@ export default class InstructionsScene extends Phaser.Scene {
         var gameHeight = this.sys.game.config.height;
         var gameWidth = this.sys.game.config.width;
         
-        var titleText = '\n欢迎来到游戏！\n'
+        var titleText = '欢迎来到游戏！'
 
         startTime = Math.round(this.time.now);
         
