@@ -22,7 +22,7 @@ import { allowDevices } from "./versionInfo.js";
 // create the phaser game, based on the following config
 const config = {
     type: Phaser.AUTO,           // rendering: webGL if available, otherwise canvas
-    width: 800,  
+    width: 1000,  
     height: 600, 
     physics: {
         default: 'arcade',       // add light-weight physics to our world
@@ -70,7 +70,7 @@ export function runTask() {
     // if desired, allow game window to resize to fit available space 
     function resizeApp () {
         // Width-height-ratio of game resolution
-        let game_ratio = 800 / 600;
+        let game_ratio = 1000 / 600;
         
         // Make div full height of browser and keep the ratio of game resolution
         let div = document.getElementById('game-container');
