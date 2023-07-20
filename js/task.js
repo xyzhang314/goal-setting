@@ -70,23 +70,26 @@ export function runTask() {
     // if desired, allow game window to resize to fit available space 
     function resizeApp () {
         // Width-height-ratio of game resolution
-        let game_ratio = 1000 / 600;
+        //let game_ratio = 1000/600;
         
         // Make div full height of browser and keep the ratio of game resolution
-        let div = document.getElementById('game-container');
-        div.style.width  = window.innerWidth + 'px';
-        div.style.height = window.innerHeight + 'px';
+        // let div = document.getElementById('game-container');
+        // div.style.width  = (window.innerHeight * gameratio) + 'px';
+        // div.style.height = window.innerHeight + 'px';
         
-        // Check if device DPI messes up the width-height-ratio
+        // // Check if device DPI messes up the width-height-ratio
         let canvas  = document.getElementsByTagName('canvas')[0];
-        let dpi_w   = parseInt(div.style.width) / canvas.width;
-        let dpi_h   = parseInt(div.style.height) / canvas.height;       
-        let height  = window.innerHeight * (dpi_w / dpi_h);
-        let width   = height * game_ratio;
-        
-        // Scale canvas 
-        canvas.style.width  = width + 'px';
-        canvas.style.height = height + 'px';
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var windowRatio = windowWidth / windowHeight;
+        var gameRatio =  game.config.width / game.config.height;
+        if (windowRatio < gameRatio) {
+            canvas.style.width = windowWidth + "px";
+            canvas.style.height = (windowWidth / gameRatio) + "px";
+        } else {
+            canvas.style.width = (windowHeight * gameRatio) + "px";
+            canvas.style.height = windowHeight + "px";
+        }
     };
     window.addEventListener('resize', resizeApp);
 };
