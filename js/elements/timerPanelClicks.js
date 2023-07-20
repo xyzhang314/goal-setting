@@ -145,7 +145,7 @@ var createDialog = function (scene, titleText, mainText, buttonText, backgrCol) 
     var textbox = scene.rexUI.add.dialog({
         background: scene.rexUI.add.roundRectangle(0, 0, 400, 400, 20, backgrCol), 
         content: scene.rexUI.add.BBCodeText(0, 0, mainText, {
-            fontSize: '20px', 
+            fontSize: '200%', 
             align: 'center', 
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
@@ -177,7 +177,7 @@ var createButton = function (scene, text) {
     var btn = scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, undefined, undefined, 40, 0xe45404),  // circle
         text: scene.add.text(0, 0, text, {
-            fontSize: '22px',
+            fontSize: '200%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',

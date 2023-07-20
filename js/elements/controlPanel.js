@@ -87,7 +87,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, '提问环节', {
-            fontSize: '24px',
+            fontSize: '230%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',
@@ -100,7 +100,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
-        fontSize: '21px',
+        fontSize: '210%',
         font: '26px monospace',
         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         align: 'center'
@@ -138,7 +138,7 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
+            fontSize: '200%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',
@@ -168,7 +168,7 @@ var createNumberBar = function (scene) {
         },
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
-            fontSize: '20px', fixedWidth: 50, fixedHeight: 45,
+            fontSize: '200%', fixedWidth: 50, fixedHeight: 45,
             valign: 'center', halign: 'center', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
 

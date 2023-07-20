@@ -1,8 +1,7 @@
 // Displays panel with UI elements for a 2AFC (accept/reject proposed option)
 
 // import our custom events centre for passsing info between scenes
-import eventsCenter from '../eventsCenter.js'
-
+import eventsCenter from '../eventsCenter.js';
 // initialize diplay vars
 var backgrCol; var titleCol; var buttonCol;
 var buttons; var choice;
@@ -11,7 +10,6 @@ var buttons; var choice;
 export default class MultipleChoicePanel {
     constructor(scene, x, y, questName, titleText, questionNo, questionText, responseOptions, gamePhase, allowBack) {
     this.scene = scene;
-    
     // set properties of the panel (text content and colours)     
     backgrCol = 0x1ea7e1;
     titleCol = 0x000000;
@@ -26,7 +24,7 @@ export default class MultipleChoicePanel {
     if (allowBack == true) {
         // add buttons to allow navigation forward/back
         buttons = scene.rexUI.add.buttons({
-            x: 400,
+            x: 425,
             y: 455,
             align: 'center',
             buttons: [ createButton(scene, '上一页')]
@@ -97,7 +95,7 @@ var createDialog = function (scene, titleText, questionNo, questionText, respons
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, titleCol),
         text: scene.add.text(0, 0, titleText, {
-            fontSize: '24px', 
+            fontSize: '230%', 
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',
@@ -109,7 +107,7 @@ var createDialog = function (scene, titleText, questionNo, questionText, respons
         }
     }),
 
-    content: scene.rexUI.add.BBCodeText(0, 0, questionText, {fontSize: '21px',
+    content: scene.rexUI.add.BBCodeText(0, 0, questionText, {fontSize: '200%',
                                                             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                                                             //font: '20px monospace', 
                                                             align: 'center' //color: '#222222'
@@ -149,7 +147,7 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
+            fontSize: '200%',
             //font: '18px monospace',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
@@ -170,9 +168,10 @@ var createButton = function (scene, text) {
         height: 40,
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 20, buttonCol),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
+            fontSize: '200%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
+        align: 'center',
         space: {
             left: 10,
             right: 10,

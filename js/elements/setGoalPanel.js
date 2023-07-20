@@ -82,7 +82,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, '请设定目标', {
-            fontSize: '24px',
+            fontSize: '230%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
         align: 'center',
@@ -96,7 +96,7 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxt, {
         font: '26px monospace',
-        fontSize: '21px',
+        fontSize: '200%',
         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         align: 'center'
     }),
@@ -109,8 +109,8 @@ var createDialog = function (scene, mainTxt, buttonTxt) {
         title: 25,
         content: 20,
         action: 10,
-        left: 86,
-        right: 86,
+        left: 94,
+        right: 94,
         top: 10,
         bottom: 10,
     },
@@ -133,7 +133,7 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0xf57f17),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
+            fontSize: '200%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',
@@ -163,7 +163,7 @@ var createNumberBar = function (scene, maxRewBlock) {
         },
 
         text: scene.rexUI.add.BBCodeText(0, 0, '', {
-            fontSize: '20px', fixedWidth: 50, 
+            fontSize: '200%', fixedWidth: 50, fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             fixedHeight: 45, valign: 'center', halign: 'center',
         }),
 

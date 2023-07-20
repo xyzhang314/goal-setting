@@ -28,7 +28,7 @@ export default class StartTaskScene extends Phaser.Scene {
             title: this.rexUI.add.label({
                 background: this.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x000000),
                 text: this.add.text(0, 0, " 练习结束！", {
-                    fontSize: '24px',
+                    fontSize: '230%',
                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                     }),
                 align: 'center',
@@ -51,7 +51,7 @@ export default class StartTaskScene extends Phaser.Scene {
                     "[color=#d0f4f7]"+approxTimeTask+" 分钟[/color]，每个小节之间可以自行休息。\n\n"+
 
                     "准备好了吗？请 [b]点击下方按钮[/b] 开始游戏。\n"),
-                   {fontSize: '21px',
+                   {fontSize: '200%',
                     font: '26px monospace',
                     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
                     align: 'center',
@@ -115,7 +115,7 @@ var createLabel = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0x5e81a2),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
+            fontSize: '200%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             //fill: '#000000'
         }),

@@ -22,12 +22,12 @@ import { allowDevices } from "./versionInfo.js";
 // create the phaser game, based on the following config
 const config = {
     type: Phaser.AUTO,           // rendering: webGL if available, otherwise canvas
-    width: 1000,  
+    width: 850,  
     height: 600, 
     physics: {
         default: 'arcade',       // add light-weight physics to our world
         arcade: {
-            gravity: { y: 600 }, // need some gravity for a side-scrolling platformer
+            gravity: { y: 100, x:800 }, // need some gravity for a side-scrolling platformer
             debug: false         // TRUE for debugging game physics, FALSE for deployment
         }
     },
@@ -74,8 +74,8 @@ export function runTask() {
         
         // Make div full height of browser and keep the ratio of game resolution
         // let div = document.getElementById('game-container');
-        // div.style.width  = (window.innerHeight * gameratio) + 'px';
-        // div.style.height = window.innerHeight + 'px';
+        // div.width  = '0px';
+        // div.height = '0px';
         
         // // Check if device DPI messes up the width-height-ratio
         let canvas  = document.getElementsByTagName('canvas')[0];

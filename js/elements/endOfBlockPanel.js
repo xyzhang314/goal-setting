@@ -39,7 +39,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
     title: scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x000000),
         text: scene.add.text(0, 0, titleTxtB, {
-            fontSize: '24px',
+            fontSize: '230%',
             // font: "26px monospace",
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
             }),
@@ -53,7 +53,7 @@ var createBreakPanel = function (scene, titleTxtB, mainTxtB, buttonTxtB) {
     }),
 
     content: scene.rexUI.add.BBCodeText(0, 0, mainTxtB, 
-                                        {fontSize: '20px', 
+                                        {fontSize: '200%', 
                                         align: 'center', 
                                         fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif', 
                                         color: '#000000'}),
@@ -90,7 +90,7 @@ var createLabelB = function (scene, text) {
     return scene.rexUI.add.label({
         background: scene.rexUI.add.roundRectangle(0, 0, 0, 40, 20, 0x5e81a2),
         text: scene.add.text(0, 0, text, {
-            fontSize: '21px',
+            fontSize: '200%',
             fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }),
         align: 'center',
