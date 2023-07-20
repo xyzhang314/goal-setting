@@ -27,7 +27,7 @@ const config = {
     physics: {
         default: 'arcade',       // add light-weight physics to our world
         arcade: {
-            gravity: { y: 100, x:800 }, // need some gravity for a side-scrolling platformer
+            gravity: { y: 600 }, // need some gravity for a side-scrolling platformer
             debug: false         // TRUE for debugging game physics, FALSE for deployment
         }
     },
