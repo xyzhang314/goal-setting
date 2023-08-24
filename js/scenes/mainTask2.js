@@ -13,7 +13,7 @@ import QuestionPanel from "../elements/questionPanel.js";
 
 // import our custom events center for passsing info between scenes and relevant data saving function
 import eventsCenter from '../eventsCenter.js'
-import { saveTask1Data, saveTask1Ques,saveIntervention } from "../saveData.js";
+import { saveTask1Data, savePostTaskData, saveIntervData } from "../saveData.js";
 
 // import effort info from versionInfo file
 import { effortTime, minPressMax, nBlocks, debugging, maxRews, taskConds } from "../versionInfo.js"; 
@@ -62,7 +62,7 @@ var goalProgressBar;
 var barWidth = 140;
 var barHeight = 40;
 var progressText;
-var prTxt = "          目标\n          进度";
+var prTxt = "            目标\n            进度";
 
 // this function extends Phaser.Scene and includes the core logic for the game
 export default class MainTask2 extends Phaser.Scene {
@@ -230,7 +230,7 @@ export default class MainTask2 extends Phaser.Scene {
             goalProgressBar = this.add.rectangle(decisionPointX+113, 18, Math.round(goalProgress*(barWidth-6)), barHeight-4, 0xFFD700) // initialize at zero
             .setOrigin(0,0) 
             .setScrollFactor(0); 
-            progressText = this.add.text(decisionPointX+12, 18, prTxt, {color: "#000000",fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',})
+            progressText = this.add.text(decisionPointX+16, 18, prTxt, {color: "#000000",fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',})
             .setAlign('center')
             .setScrollFactor(0);
             // if first trial2, set goal for this block2
@@ -240,6 +240,7 @@ export default class MainTask2 extends Phaser.Scene {
                 // then grab set goal for this block2 and allow game to continue
                 eventsCenter.once('block'+block2+'goalset', 
                     function(){ blockGoal = this.registry.get('block'+block2+'goal');  // get goal for this block2
+                                saveIntervData('block'+block2+'goal', blockGoal);
                                 // restart player
                                 this.player.sprite.setVelocityX(150);  // positive X velocity -> move R
                                 this.player.sprite.anims.play('run', true); 
@@ -251,7 +252,7 @@ export default class MainTask2 extends Phaser.Scene {
             // then allow game to continue
             eventsCenter.once('block'+block2+'answered', 
                 function(){ let gameLiking = this.registry.get('block'+block2+'answer');   
-                            // saveIntervention('block'+block2+'answer', gameLiking); 
+                            saveIntervData('block'+block2+'answer', gameLiking);
                             // restart player
                             this.player.sprite.setVelocityX(150);  // positive X velocity -> move R
                             this.player.sprite.anims.play('run', true); 
@@ -308,40 +309,6 @@ export default class MainTask2 extends Phaser.Scene {
     }
     
     nextScene() {
-        // save task0 data [for supabase]
-        var nTask1data = []; 
-        for (var i = 0; i < 43; i++)
-        {
-            nTask1data.push('task1_trial'+i)
-        }
-        saveTask1Data(this.registry.get(nTask1data));
-
-        // save question answer [for supabase]
-        var nTask1question = [];
-        for (var i = 0; i < 3; i++)
-        {
-            nTask1question.push('task1postBlock'+i+"question1", 'task1postBlock'+i+"question2", 'task1postBlock'+i+"question3")
-            //'task'+taskN+gamePhase+'question'+questionNo
-        }
-        saveTask1Ques(this.registry.get(nTask1question));
-
-        // save Goal OR Gamelike score
-        if (taskType == "planning") {
-            var nGoalSet = [];
-            for (var i = 0; i < 4; i++)
-            {
-                nGoalSet.push('block'+i+'goal')
-                //'task'+taskN+gamePhase+'question'+questionNo
-            }
-            saveIntervention(this.registry.get(nGoalSet));
-        }else
-        {var nGameLike = [];
-            for (var i = 0; i < 4; i++)
-            {
-                nGameLike.push('block'+i+'answer')
-                //'task'+taskN+gamePhase+'question'+questionNo
-            }
-            saveIntervention(this.registry.get(nGameLike));}
         this.scene.start('TaskEndScene2');
     }
 }
@@ -543,8 +510,7 @@ var trialEnd2 = function () {
                                                   condition: taskType
                                                  });
     // save data
-    //saveTaskData(trial2, this.registry.get(`trial2${trial2}`));        // [for firebase]
-    //saveTaskData("task"+taskN+"_trial"+trial2, this.registry.get(`task${taskN}_trial${trial2}`));   // [for firebase]
+    saveTask1Data("task"+taskN+"_trial"+trial2, this.registry.get(`task${taskN}_trial${trial2}`));   // [for LeanCloud]
     
     // if end of block2, display end of block2 screen
     if (((trial2+1) % blockLength == 0)) {
@@ -567,21 +533,21 @@ var trialEnd2 = function () {
                 // restart coin total and goal progress from 0 after each block2
                 nCoins = 0;
                 goalProgress = 0;
-                prTxt = "           目标\n           进度";
+                prTxt = "            目标\n            进度";
                 // set goal or get control rating for next block2
                 if (taskType == "planning") {
                     this.goalPanel = new SetGoalPanel(this, mapWidth-gameWidth/2, gameHeight/2, block2, maxRews[block2]);   
                     // then grab set goal for this block2 and allow game to continue
                     eventsCenter.once('block'+block2+'goalset', 
                         function(){ blockGoal = this.registry.get('block'+block2+'goal');  // get goal for this block
-                                    //saveTaskData('block'+block2+'goal', blockGoal); // console.log(blockGoal); 
+                                    saveIntervData('block'+block2+'goal', blockGoal); // console.log(blockGoal); 
                                     // then move on to next trial2
                                     this.scene.restart();}, this)
                 } else {
                     this.likingPanel = new ControlPanel(this, mapWidth-gameWidth/2, gameHeight/2, block2);     
                     eventsCenter.once('block'+block2+'answered', 
                         function(){ let gameLiking = this.registry.get('block'+block2+'answer');  // get game liking control rating for this block
-                                    //saveTaskData('block'+block2+'answer', gameLiking); // console.log(gameLiking); 
+                                    saveIntervData('block'+block2+'answer', gameLiking); // console.log(gameLiking); 
                                     // move on to next trial2
                                     this.scene.restart();}, this) 
                 }
@@ -615,7 +581,7 @@ var getBlockEndRatings2 = function (scene) {
         ///////////////////QUESTION TWO////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question1complete', function () {
             // coinImg.destroy();
-            //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
+            savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [LeanCloud]
             mainTxt = '在刚才一轮游戏中，当你成功收集\n'+
                       '金币时,你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
@@ -632,7 +598,7 @@ var getBlockEndRatings2 = function (scene) {
         ///////////////////QUESTION THREE////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
             // coinImg.destroy();
-            //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [firebase]
+            savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));     // [LeanCloud]
             mainTxt = '在刚才一轮游戏中，当你收集金币时，\n'+
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
@@ -647,7 +613,7 @@ var getBlockEndRatings2 = function (scene) {
         // end scene
         eventsCenter.once('task'+taskN+gamePhase+'question3complete', function () {
             // coinImg.destroy();
-            //savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));    // [firebase]
+            savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`));    // [LeanCloud]
         }, this);
 };
 

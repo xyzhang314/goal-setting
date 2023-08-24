@@ -3,121 +3,268 @@
  *
  */
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 
-
-
-
-/* Container holding jsPsych content */
- .jspsych-display-element {
+ #noconsent {
+   margin-block-start: 0.1em;
+   margin-block-end: 0.1em;
    display: flex;
-   flex-direction: column;
-   overflow-y: auto;
-   background-color: aliceblue;
+   align-items: center;
+   justify-content: center;
  }
-
- .jspsych-display-element:focus {
-   outline: none;
+ #logo {
+   display: flex;
+   align-items: center;
+   justify-content: center;
  }
-
- .jspsych-content-wrapper {
+ input{
+   width: 260px;
+   display: inline-block;
+   border:1px solid;
+   font-size: 26px;
+   border-radius: 4px;
+ }
+ input[class="otherMed"]{
+  width: 330px;
+ }
+ button[type="button"] {
+   font-size: 24px;
    display: flex;
    margin: auto;
-   flex: 1 1 100%;
-   width: 100%;
+   justify-content: center;
+   align-content: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   margin-top: 5px;
+   margin-bottom: 8px;
  }
-
- .jspsych-content {
-   max-width: 75%; /* this is mainly an IE 10-11 fix */
+ input[type="radio"] {
+   width: 26px;
+   height: 26px;
+   position: relative;
+   margin-left:0.3rem;
+ }
+ fieldset{
+   border-radius: 4px;
+ }
+ button[type=submit] {
+   width: 3rem;
+   background-color: #4CAF50;
+   color: white;
+   padding: 10px 10px;
+   margin: 16px 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+ button[type=submit]:hover {
+   background-color: #45a049;
+ }
+ form[class="expandable"] {
+   display:none;
+ }
+ input[id="patient"]:checked ~ form[class="expandable"]{
+   display:inline;
+ }
+ form[class="otherMed"]{
+  display:none;
+ }
+ option[id="other"]:checked ~ form[class="otherMed"]{
+    display:inline;
+ }
+ legend {
+   background-color: #777777;
+   color: #fff;
+   margin: auto;
+   border-radius: 4px;
+   padding: 6px 8px;
+   font-size: 0.5rem;
+   /* border-radius: 10px;  */
+   display: flex;
+   justify-content: center;
+   align-content: center;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
+ fieldset[id="medInfo"]{
+   margin-top:0.5rem;
+   width:20%;
+   margin-left:0.5rem;
+ }
+ ul {
+   display: block;
+   list-style-type: disc;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   padding-inline-start: 3em;
+   padding-inline-end: 3em;
+   padding-top: 1.1em;
+   padding-bottom: 2.5em;
+   width: 15rem
+ }
+ .form-all {
+   box-shadow: 0 0 32px rgba(42, 42, 42, 0.16);
+   margin-top: 1.7rem;
+   margin-bottom: 1.7rem;
+   margin-left: 1em;
+   margin-right: 1em;
+ }
+ img {
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+   height: 2rem;
+ }
+ h1 {
+   display: block;
    text-align: center;
-   margin: auto; /* this is for overflowing content */
+   font-size: 32px;
+   margin-block-end: 1.4rem;
+   font-weight: bold;
  }
-
- .jspsych-top {
-   align-items: flex-start;
+ hr {
+   border: none;
+   color: #000000;
+   overflow: visible;
+   text-align: center;
+   height: 8px;
  }
-
- .jspsych-middle {
-   align-items: center;
+ p {
+   font-size: 26px;
+   margin-bottom:0.5rem;
  }
-
-/* fonts and type */
-.jspsych-display-element {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ label {
+   font-size: 26px;
+ }
+ label[id="med"] {
+   font-size: 26px;
+   line-height: 1.8;
+ }
+ button{
+   font-size: 26px;
+   margin-top: 0.5rem;
+   margin-bottom: 0.5rem;
+ }
+ select{
+   display: inline-block;
+   border:1px solid;
+   font-size: 26px;
+   border-radius: 4px;
+ }
+ optgroup{
   font-size: 20px;
-  line-height: 1em;
-}
-
-/* Form elements like input fields and buttons */
-.jspsych-display-element input[type="text"] {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 20px,22px,24px;
-}
-
-/* borrowing Bootstrap style for btn elements, but combining styles a bit */
-.jspsych-btn {
-  display: inline-block;
-  padding: 0px;
-  margin: 0px;
-  font-size: 20px;
-  font-weight: 400;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  cursor: pointer;
-  line-height: 1.4;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-}
-
-.jspsych-btn:hover {
-  background-color: #ddd;
-  border-color: #aaa;
-}
-
-.jspsych-btn:disabled {
-  background-color: #eee;
-  color: #aaa;
-  border-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* jsPsych progress bar */
-#jspsych-progressbar-container {
-  color: #555;
-  border-bottom: 1px solid #dedede;
-  background-color: #f9f9f9;
-  margin-bottom: 1em;
-  text-align: center;
-  padding: 8px 0px;
-  width: 100%;
-  line-height: 1em;
-}
-#jspsych-progressbar-container span {
-  font-size: 14px;
-  padding-right: 14px;
-}
-#jspsych-progressbar-outer {
-  background-color: #eee;
-  width: 50%;
-  margin: auto;
-  height: 14px;
-  display: inline-block;
-  vertical-align: middle;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-#jspsych-progressbar-inner {
-  background-color: #aaa;
-  width: 0%;
-  height: 100%;
-}
-
-/* Control appearance of jsPsych.data.displayData() */
-#jspsych-data-display {
-  text-align: left;
-}
+ }
+ /* Container holding jsPsych content */
+  .jspsych-display-element {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: aliceblue;
+  }
+ 
+  .jspsych-display-element:focus {
+    outline: none;
+  }
+ 
+  .jspsych-content-wrapper {
+    display: flex;
+    margin: auto;
+    flex: 1 1 100%;
+    width: 100%;
+  }
+ 
+  .jspsych-content {
+    max-width: 75%; /* this is mainly an IE 10-11 fix */
+    text-align: center;
+    margin: auto; /* this is for overflowing content */
+  }
+ 
+  .jspsych-top {
+    align-items: flex-start;
+  }
+ 
+  .jspsych-middle {
+    align-items: center;
+  }
+ 
+ /* fonts and type */
+ .jspsych-display-element {
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-size: 20px;
+   line-height: 1em;
+ }
+ 
+ /* Form elements like input fields and buttons */
+ .jspsych-display-element input[type="text"] {
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-size: 20px,22px,24px;
+ }
+ 
+ /* borrowing Bootstrap style for btn elements, but combining styles a bit */
+ .jspsych-btn {
+   display: inline-block;
+   padding: 0px;
+   margin: 0px;
+   font-size: 20px;
+   font-weight: 400;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   cursor: pointer;
+   line-height: 1.4;
+   text-align: center;
+   white-space: nowrap;
+   vertical-align: middle;
+   background-image: none;
+   border: 1px solid transparent;
+   border-radius: 2px;
+   color: #333;
+   background-color: #fff;
+   border-color: #ccc;
+ }
+ 
+ .jspsych-btn:hover {
+   background-color: #ddd;
+   border-color: #aaa;
+ }
+ 
+ .jspsych-btn:disabled {
+   background-color: #eee;
+   color: #aaa;
+   border-color: #ccc;
+   cursor: not-allowed;
+ }
+ 
+ /* jsPsych progress bar */
+ #jspsych-progressbar-container {
+   color: #555;
+   border-bottom: 1px solid #dedede;
+   background-color: #f9f9f9;
+   margin-bottom: 1em;
+   text-align: center;
+   padding: 8px 0px;
+   width: 100%;
+   line-height: 1em;
+ }
+ #jspsych-progressbar-container span {
+   font-size: 14px;
+   padding-right: 14px;
+ }
+ #jspsych-progressbar-outer {
+   background-color: #eee;
+   width: 50%;
+   margin: auto;
+   height: 14px;
+   display: inline-block;
+   vertical-align: middle;
+   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+ }
+ #jspsych-progressbar-inner {
+   background-color: #aaa;
+   width: 0%;
+   height: 100%;
+ }
+ 
+ /* Control appearance of jsPsych.data.displayData() */
+ #jspsych-data-display {
+   text-align: left;
+ }

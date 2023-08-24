@@ -221,12 +221,12 @@ export default class PracticeTask extends Phaser.Scene {
     
     nextScene() {
         // save data
-        var nPracdata = [];
-        for (var i = 0; i < 5; i++)
-        {
-            nPracdata.push('pracTrial'+i)
-        }
-        savePracTaskData(this.registry.get(nPracdata));
+        // var nPracdata = [];
+        // for (var i = 0; i < 5; i++)
+        // {
+        //     nPracdata.push('pracTrial'+i)
+        // }
+        // savePracTaskData(this.registry.get(nPracdata));
         this.scene.start('StartTaskScene');
     }
 }
@@ -374,17 +374,10 @@ var pracTrialEnd = function () {
                                             trialSuccess: trialSuccess,
                                             gemsRunningTotal: nGems,
                                             maxPressCount: this.registry.get('maxPressCount')});
-                                    // 'pracTrialNo: ' + pracTrial +', '
-                                    // +'trialReward: ' + pracTrialReward +', '
-                                    // +'trialEffort: ' + pracTrialEffort +', '
-                                    // +'pressCount: ' + pressCount +', '
-                                    // +'pressTimes: ' + pressTimes +', '
-                                    // +'trialSuccess: ' + trialSuccess +', '
-                                    // +'gemsRunningTotal: ' + nGems +', '
-                                    // +'maxPressCount: ' + this.registry.get('maxPressCount') +', '
+
 
     // save data
-    savePracTaskData(this.registry.get('pracTrial')); //'pracTrial0', 'pracTrial1', 'pracTrial2', 'pracTrial3', 'pracTrial4'
+    savePracTaskData(pracTrial, this.registry.get(`pracTrial${pracTrial}`));
     // iterate trial number
     pracTrial++; 
     // move to next trial

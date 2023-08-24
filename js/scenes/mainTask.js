@@ -10,7 +10,7 @@ import QuestionPanel from "../elements/questionPanel.js";
 
 // import our custom events center for passsing info between scenes and relevant data saving function
 import eventsCenter from '../eventsCenter.js'
-import { saveTask0Data, saveTask0Ques } from "../saveData.js";
+import { saveTask0Data, savePostTaskData } from "../saveData.js";
 
 // import effort info from versionInfo file
 import { effortTime, minPressMax, nBlocks, debugging, maxRews, taskConds } from "../versionInfo.js"; 
@@ -256,22 +256,6 @@ export default class MainTask extends Phaser.Scene {
     }
     
     nextScene() {
-        // save task0 data [for supabase]
-        var nTask0data = []; 
-        for (var i = 0; i < 44; i++)
-        {
-            nTask0data.push('task0_trial'+i)
-        }
-        saveTask0Data(this.registry.get(nTask0data));
-
-        // save question answer [for supabase]
-        var nTask0question = [];
-        for (var i = 0; i < 4; i++)
-        {
-            nTask0question.push('task0postBlock'+i+"question1", 'task0postBlock'+i+"question2", 'task0postBlock'+i+"question3")
-            //'task'+taskN+gamePhase+'question'+questionNo
-        }
-        saveTask0Ques(this.registry.get(nTask0question));
         this.scene.start('TaskEndScene');
     }
 }
@@ -474,7 +458,7 @@ var trialEnd = function () {
                                                   condition: taskType
                                                  });
     // save data
-    // saveTaskData(trial, this.registry.get(`trial${trial}`));        // [for firebase]
+    saveTask0Data("task"+taskN+"_trial"+trial, this.registry.get(`task${taskN}_trial${trial}`));        // [for LeanCloud]
     
     // if end of block 
     if (((trial+1) % blockLength == 0)) {
@@ -524,6 +508,7 @@ var getBlockEndRatings = function (scene) {
         ///////////////////QUESTION TWO////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question1complete', function () {
             // coinImg.destroy();
+            savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`)); 
             mainTxt = '在刚才一轮游戏中，当你成功收集\n'+
                       '金币时，你会感到多大的成就感？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
@@ -540,6 +525,7 @@ var getBlockEndRatings = function (scene) {
         ///////////////////QUESTION THREE////////////////////
         eventsCenter.once('task'+taskN+gamePhase+'question2complete', function () {
             // coinImg.destroy();
+            savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`)); 
             mainTxt = '在刚才一轮游戏中，当你收集金币时\n'+
                       '你会感到有多无聊？\n\n\n'+
                       '请从 0 到 100 进行评分，其中\n'+ 
@@ -554,6 +540,7 @@ var getBlockEndRatings = function (scene) {
         // end scene
         eventsCenter.once('task'+taskN+gamePhase+'question3complete', function () {
             // coinImg.destroy();
+            savePostTaskData('task'+taskN+'_'+gamePhase+'_'+questionNo, scene.registry.get(`task${taskN}${gamePhase}question${questionNo}`)); 
         }, this);
 };
 

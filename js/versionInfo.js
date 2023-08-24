@@ -10,7 +10,7 @@ var briefStudyDescr = "For this particular study, we will ask you play two games
 var debugging = false;							// !!set to "false" for real exp!!
 
 // time and payment info for this task version
-var approxTime = 40;   			 				// approx time to complete this version of the experiment (minutes)
+var approxTime = 30;   			 				// approx time to complete this version of the experiment (minutes)
 var hourlyRate = 7.5;							// 7.50 hourly rate (GBP)
 var baseEarn = ((approxTime/60)*hourlyRate);   
 var bonusRate = 0.2;			 	 			// additional bonus per coin collected (GBPpence)

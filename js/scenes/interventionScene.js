@@ -9,7 +9,7 @@ import { randCond } from "../versionInfo.js";
 
 // import our custom events center for passsing info between scenes and data saving function
 import eventsCenter from "../eventsCenter.js";
-import { saveQuizData } from "../saveData.js";
+import { saveTask1Data } from "../saveData.js";
 
 // initialize intervention-condition specific text vars
 var intTitleText; var intText1; var intText2; var intTitleText2;
@@ -37,7 +37,7 @@ export default class InterventionScene extends Phaser.Scene {
         var gameWidth = this.sys.game.config.width;
 
         // get time;
-        // saveTaskData('interventionStartTime', Math.round(this.time.now));
+        saveTask1Data('interventionStartTime', Math.round(this.time.now));
 
         // set text depending on randomization condition
         if (randCond == "planning") {
@@ -124,9 +124,8 @@ export default class InterventionScene extends Phaser.Scene {
         
         ///////////////////PAGE TWO////////////////////
         eventsCenter.once(gamePhase+questName+'1complete', function () {
-            saveQuizData(this.registry.get('postInterventioninterventionQuiz1')); //小测验的回答
-            // saveTaskData('interventionQuizAnswer', this.registry.get(`${gamePhase}${questName}${questionNo}`));
-            // saveTaskData('interventionQuizCompleteTime', Math.round(this.time.now));
+            saveTask1Data('interventionQuizAnswer', this.registry.get(`${gamePhase}${questName}${questionNo}`));
+            saveTask1Data('interventionQuizCompleteTime', Math.round(this.time.now));
             pageNo = 2;
             this.interventionPanel = new InstructionsPanel(this, 
                                                            gameWidth/2, gameHeight/2,

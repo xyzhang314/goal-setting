@@ -10,7 +10,6 @@ import { saveStartData } from "../saveData.js";
 // initialize global start time var
 var startTime;
 
-
 // this function extends Phaser.Scene and includes the core logic for the scene
 export default class InstructionsScene extends Phaser.Scene {
     constructor() {
