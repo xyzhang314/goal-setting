@@ -183,6 +183,7 @@ form.addEventListener("submit", function (event) {
   const phoneNum = Number(document.getElementById("uphone").value);
   window.phoneNum = phoneNum; //change to globally-scoped variables
   if ($("input[name='mentalIllness']:checked").val()=="no"){
+        saveSubInfo('name', document.getElementById("uname").value);
         saveSubInfo('run', $("input[name='playTime']:checked").val());
         saveSubInfo('medicine', $("input[name='mentalIllness']:checked").val());
         document.getElementById('infoSheet').style.display = "none";
@@ -193,14 +194,14 @@ form.addEventListener("submit", function (event) {
         var time = document.querySelectorAll("input[name='MedTime']");
         var other = document.getElementsByClassName("otherMed");
         var i;
+        saveSubInfo('name', document.getElementById("uname").value);
+        saveSubInfo('medDur', document.getElementById("medDur").value);
         for (i=0; i<type.length; i++){
         saveSubInfo('medType', type[i].value);
         saveSubInfo('medDose', dose[i].value);
         saveSubInfo('medTime', time[i].value);
         saveSubInfo('otherMed', other[i].value);
         }
-        saveSubInfo('run',$("input[name='playTime']:checked").val());
-        saveSubInfo('medDur', document.getElementById("medDur").value);
         document.getElementById('infoSheet').style.display = "none";
         runTask();
         }
